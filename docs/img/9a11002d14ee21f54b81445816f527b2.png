@@ -1,0 +1,2949 @@
+<!doctype html >
+<!--[if IE 8]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
+<head>
+    <title>SIEM - A Beginner&#039;s Guide to Security Analyst 2023</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="pingback" href="https://kalilinuxtutorials.com/xmlrpc.php" />
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" type="image/png" href="https://1.bp.blogspot.com/-bZ48PWBUikE/YSYJS0Xi0rI/AAAAAAAAOkU/3EsSKyVnKFAezIDTMEhClloiuikIUjgjQCLcBGAsYHQ/s16000/Kali%2BTutorials.png">
+	<!-- This site is optimized with the Yoast SEO plugin v17.0 - https://yoast.com/wordpress/plugins/seo/ -->
+	<meta name="description" content="SIEM, when expanded, becomes Security Information Event Management. As its name suggests, the main function of a SIEM is Event management." />
+	<link rel="canonical" href="https://kalilinuxtutorials.com/a-beginners-guide-to-siem/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="SIEM - A Beginner&#039;s Guide to Security Analyst 2023" />
+	<meta property="og:description" content="SIEM, when expanded, becomes Security Information Event Management. As its name suggests, the main function of a SIEM is Event management." />
+	<meta property="og:url" content="https://kalilinuxtutorials.com/a-beginners-guide-to-siem/" />
+	<meta property="og:site_name" content="Kali Linux Tutorials" />
+	<meta property="article:published_time" content="2022-12-15T07:33:00+00:00" />
+	<meta property="article:modified_time" content="2022-12-15T08:36:06+00:00" />
+	<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Ravi Sankar" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="7 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://kalilinuxtutorials.com/#organization","name":"Kali Linux Tutorials","url":"https://kalilinuxtutorials.com/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://kalilinuxtutorials.com/#logo","inLanguage":"en-US","url":"https://kalilinuxtutorials.com/wp-content/uploads/2021/08/Kali-Tutorials.png","contentUrl":"https://kalilinuxtutorials.com/wp-content/uploads/2021/08/Kali-Tutorials.png","width":272,"height":90,"caption":"Kali Linux Tutorials"},"image":{"@id":"https://kalilinuxtutorials.com/#logo"}},{"@type":"WebSite","@id":"https://kalilinuxtutorials.com/#website","url":"https://kalilinuxtutorials.com/","name":"Kali Linux Tutorials","description":"Kali","publisher":{"@id":"https://kalilinuxtutorials.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://kalilinuxtutorials.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#primaryimage","inLanguage":"en-US","url":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp","contentUrl":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp","width":"728","height":"380","caption":"SIEM Guide"},{"@type":"WebPage","@id":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#webpage","url":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/","name":"SIEM - A Beginner's Guide to Security Analyst 2023","isPartOf":{"@id":"https://kalilinuxtutorials.com/#website"},"primaryImageOfPage":{"@id":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#primaryimage"},"datePublished":"2022-12-15T07:33:00+00:00","dateModified":"2022-12-15T08:36:06+00:00","description":"SIEM, when expanded, becomes Security Information Event Management. As its name suggests, the main function of a SIEM is Event management.","breadcrumb":{"@id":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://kalilinuxtutorials.com/a-beginners-guide-to-siem/"]}]},{"@type":"BreadcrumbList","@id":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"SIEM &#8211; Security Information and Event Management Tools &#8211; A Beginner&#8217;s Guide"}]},{"@type":"Article","@id":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#article","isPartOf":{"@id":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#webpage"},"author":{"@id":"https://kalilinuxtutorials.com/#/schema/person/fc7a437fea63fdc097205621071d5545"},"headline":"SIEM &#8211; Security Information and Event Management Tools &#8211; A Beginner&#8217;s Guide","datePublished":"2022-12-15T07:33:00+00:00","dateModified":"2022-12-15T08:36:06+00:00","mainEntityOfPage":{"@id":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#webpage"},"wordCount":1368,"commentCount":0,"publisher":{"@id":"https://kalilinuxtutorials.com/#organization"},"image":{"@id":"https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#primaryimage"},"thumbnailUrl":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp","keywords":["corporate security","enterprise security","log management","network security","security","security analysis","siem"],"articleSection":["Blog"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://kalilinuxtutorials.com/a-beginners-guide-to-siem/#respond"]}]},{"@type":"Person","@id":"https://kalilinuxtutorials.com/#/schema/person/fc7a437fea63fdc097205621071d5545","name":"Ravi Sankar","image":{"@type":"ImageObject","@id":"https://kalilinuxtutorials.com/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/4000d2391ab7b0152dd85a01be057b5f?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/4000d2391ab7b0152dd85a01be057b5f?s=96&d=mm&r=g","caption":"Ravi Sankar"},"url":"https://kalilinuxtutorials.com/author/ravisankar/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="amphtml" href="https://kalilinuxtutorials.com/a-beginners-guide-to-siem/amp/" /><meta name="generator" content="AMP for WP 1.0.77.20"/><link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+<link rel="alternate" type="application/rss+xml" title="Kali Linux Tutorials &raquo; Feed" href="https://kalilinuxtutorials.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Kali Linux Tutorials &raquo; Comments Feed" href="https://kalilinuxtutorials.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Kali Linux Tutorials &raquo; SIEM &#8211; Security Information and Event Management Tools &#8211; A Beginner&#8217;s Guide Comments Feed" href="https://kalilinuxtutorials.com/a-beginners-guide-to-siem/feed/" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/kalilinuxtutorials.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.1"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='https://kalilinuxtutorials.com/wp-includes/css/dist/block-library/style.min.css?ver=6.1.1' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel='stylesheet' id='mediaelement-css' href='https://kalilinuxtutorials.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css' href='https://kalilinuxtutorials.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=6.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='classic-theme-styles-css' href='https://kalilinuxtutorials.com/wp-includes/css/classic-themes.min.css?ver=1' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 11px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 32px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--regular: 15px;--wp--preset--font-size--larger: 50px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='td-plugin-newsletter-css' href='https://kalilinuxtutorials.com/wp-content/plugins/td-newsletter/style.css?ver=11.2' type='text/css' media='all' />
+<link rel='stylesheet' id='td-plugin-multi-purpose-css' href='https://kalilinuxtutorials.com/wp-content/plugins/td-composer/td-multi-purpose/style.css?ver=5496ac087ca179a9788dadb779dbc160' type='text/css' media='all' />
+<link rel='stylesheet' id='google-fonts-style-css' href='https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%7CRoboto%3A400%2C500%2C700&#038;display=swap&#038;ver=11.2' type='text/css' media='all' />
+<link rel='stylesheet' id='td-theme-css' href='https://kalilinuxtutorials.com/wp-content/themes/Newspaper/style.css?ver=11.2' type='text/css' media='all' />
+<style id='td-theme-inline-css' type='text/css'>
+    
+        @media (max-width: 767px) {
+            .td-header-desktop-wrap {
+                display: none;
+            }
+        }
+        @media (min-width: 767px) {
+            .td-header-mobile-wrap {
+                display: none;
+            }
+        }
+    
+	
+</style>
+<link rel='stylesheet' id='td-legacy-framework-front-style-css' href='https://kalilinuxtutorials.com/wp-content/plugins/td-composer/legacy/Newspaper/assets/css/td_legacy_main.css?ver=5496ac087ca179a9788dadb779dbc160' type='text/css' media='all' />
+<link rel='stylesheet' id='td-standard-pack-framework-front-style-css' href='https://kalilinuxtutorials.com/wp-content/plugins/td-standard-pack/Newspaper/assets/css/td_standard_pack_main.css?ver=9214a050dc0a6c6eeaa5c1aa35f9cfe3' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css' href='https://kalilinuxtutorials.com/wp-content/plugins/jetpack/css/jetpack.css?ver=10.0' type='text/css' media='all' />
+<script type='text/javascript' src='https://kalilinuxtutorials.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://kalilinuxtutorials.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+
+<!-- Google Analytics snippet added by Site Kit -->
+<script type='text/javascript' src='https://www.googletagmanager.com/gtag/js?id=UA-155212120-1' id='google_gtagjs-js' async></script>
+<script type='text/javascript' id='google_gtagjs-js-after'>
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["kalilinuxtutorials.com"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-155212120-1", {"anonymize_ip":true});
+gtag("config", "G-XJ4H31Z1KJ");
+</script>
+
+<!-- End Google Analytics snippet added by Site Kit -->
+<link rel="https://api.w.org/" href="https://kalilinuxtutorials.com/wp-json/" /><link rel="alternate" type="application/json" href="https://kalilinuxtutorials.com/wp-json/wp/v2/posts/810" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://kalilinuxtutorials.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://kalilinuxtutorials.com/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 6.1.1" />
+<link rel='shortlink' href='https://kalilinuxtutorials.com/?p=810' />
+<link rel="alternate" type="application/json+oembed" href="https://kalilinuxtutorials.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fkalilinuxtutorials.com%2Fa-beginners-guide-to-siem%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://kalilinuxtutorials.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fkalilinuxtutorials.com%2Fa-beginners-guide-to-siem%2F&#038;format=xml" />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com"><meta name="generator" content="Site Kit by Google 1.89.0" /><style type='text/css'>img#wpstats{display:none}</style>
+		<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    			<script>
+				window.tdwGlobal = {"adminUrl":"https:\/\/kalilinuxtutorials.com\/wp-admin\/","wpRestNonce":"d59bf105c5","wpRestUrl":"https:\/\/kalilinuxtutorials.com\/wp-json\/","permalinkStructure":"\/%postname%\/"};
+			</script>
+			    <script>
+        window.tdaGlobal = {"adminUrl":"https:\/\/kalilinuxtutorials.com\/wp-admin\/","wpRestNonce":"d59bf105c5","wpRestUrl":"https:\/\/kalilinuxtutorials.com\/wp-json\/","permalinkStructure":"\/%postname%\/","postId":810};
+    </script>
+    
+<!-- Google AdSense snippet added by Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- End Google AdSense snippet added by Site Kit -->
+
+<!-- Google AdSense snippet added by Site Kit -->
+<script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771632397923004&amp;host=ca-host-pub-2644536267352236" crossorigin="anonymous" type="text/javascript"></script>
+
+<!-- End Google AdSense snippet added by Site Kit -->
+
+<!-- JS generated by theme -->
+
+<script>
+    
+    
+
+	    var tdBlocksArray = []; //here we store all the items for the current page
+
+	    //td_block class - each ajax block uses a object of this class for requests
+	    function tdBlock() {
+		    this.id = '';
+		    this.block_type = 1; //block type id (1-234 etc)
+		    this.atts = '';
+		    this.td_column_number = '';
+		    this.td_current_page = 1; //
+		    this.post_count = 0; //from wp
+		    this.found_posts = 0; //from wp
+		    this.max_num_pages = 0; //from wp
+		    this.td_filter_value = ''; //current live filter value
+		    this.is_ajax_running = false;
+		    this.td_user_action = ''; // load more or infinite loader (used by the animation)
+		    this.header_color = '';
+		    this.ajax_pagination_infinite_stop = ''; //show load more at page x
+	    }
+
+
+        // td_js_generator - mini detector
+        (function(){
+            var htmlTag = document.getElementsByTagName("html")[0];
+
+	        if ( navigator.userAgent.indexOf("MSIE 10.0") > -1 ) {
+                htmlTag.className += ' ie10';
+            }
+
+            if ( !!navigator.userAgent.match(/Trident.*rv\:11\./) ) {
+                htmlTag.className += ' ie11';
+            }
+
+	        if ( navigator.userAgent.indexOf("Edge") > -1 ) {
+                htmlTag.className += ' ieEdge';
+            }
+
+            if ( /(iPad|iPhone|iPod)/g.test(navigator.userAgent) ) {
+                htmlTag.className += ' td-md-is-ios';
+            }
+
+            var user_agent = navigator.userAgent.toLowerCase();
+            if ( user_agent.indexOf("android") > -1 ) {
+                htmlTag.className += ' td-md-is-android';
+            }
+
+            if ( -1 !== navigator.userAgent.indexOf('Mac OS X')  ) {
+                htmlTag.className += ' td-md-is-os-x';
+            }
+
+            if ( /chrom(e|ium)/.test(navigator.userAgent.toLowerCase()) ) {
+               htmlTag.className += ' td-md-is-chrome';
+            }
+
+            if ( -1 !== navigator.userAgent.indexOf('Firefox') ) {
+                htmlTag.className += ' td-md-is-firefox';
+            }
+
+            if ( -1 !== navigator.userAgent.indexOf('Safari') && -1 === navigator.userAgent.indexOf('Chrome') ) {
+                htmlTag.className += ' td-md-is-safari';
+            }
+
+            if( -1 !== navigator.userAgent.indexOf('IEMobile') ){
+                htmlTag.className += ' td-md-is-iemobile';
+            }
+
+        })();
+
+
+
+
+        var tdLocalCache = {};
+
+        ( function () {
+            "use strict";
+
+            tdLocalCache = {
+                data: {},
+                remove: function (resource_id) {
+                    delete tdLocalCache.data[resource_id];
+                },
+                exist: function (resource_id) {
+                    return tdLocalCache.data.hasOwnProperty(resource_id) && tdLocalCache.data[resource_id] !== null;
+                },
+                get: function (resource_id) {
+                    return tdLocalCache.data[resource_id];
+                },
+                set: function (resource_id, cachedData) {
+                    tdLocalCache.remove(resource_id);
+                    tdLocalCache.data[resource_id] = cachedData;
+                }
+            };
+        })();
+
+    
+    
+var td_viewport_interval_list=[{"limitBottom":767,"sidebarWidth":228},{"limitBottom":1018,"sidebarWidth":300},{"limitBottom":1140,"sidebarWidth":324}];
+var td_animation_stack_effect="type0";
+var tds_animation_stack=true;
+var td_animation_stack_specific_selectors=".entry-thumb, img, .td-lazy-img";
+var td_animation_stack_general_selectors=".td-animation-stack img, .td-animation-stack .entry-thumb, .post img, .td-animation-stack .td-lazy-img";
+var tdc_is_installed="yes";
+var td_ajax_url="https:\/\/kalilinuxtutorials.com\/wp-admin\/admin-ajax.php?td_theme_name=Newspaper&v=11.2";
+var td_get_template_directory_uri="https:\/\/kalilinuxtutorials.com\/wp-content\/plugins\/td-composer\/legacy\/common";
+var tds_snap_menu="";
+var tds_logo_on_sticky="";
+var tds_header_style="";
+var td_please_wait="Please wait...";
+var td_email_user_pass_incorrect="User or password incorrect!";
+var td_email_user_incorrect="Email or username incorrect!";
+var td_email_incorrect="Email incorrect!";
+var tds_more_articles_on_post_enable="";
+var tds_more_articles_on_post_time_to_wait="";
+var tds_more_articles_on_post_pages_distance_from_top=0;
+var tds_theme_color_site_wide="#1e73be";
+var tds_smart_sidebar="";
+var tdThemeName="Newspaper";
+var td_magnific_popup_translation_tPrev="Previous (Left arrow key)";
+var td_magnific_popup_translation_tNext="Next (Right arrow key)";
+var td_magnific_popup_translation_tCounter="%curr% of %total%";
+var td_magnific_popup_translation_ajax_tError="The content from %url% could not be loaded.";
+var td_magnific_popup_translation_image_tError="The image #%curr% could not be loaded.";
+var tdBlockNonce="28e7c426de";
+var tdDateNamesI18n={"month_names":["January","February","March","April","May","June","July","August","September","October","November","December"],"month_names_short":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"day_names":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"day_names_short":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]};
+var td_ad_background_click_link="";
+var td_ad_background_click_target="";
+</script>
+
+
+<!-- Header style compiled by theme -->
+
+<style>
+    
+.td-header-wrap .black-menu .sf-menu > .current-menu-item > a,
+    .td-header-wrap .black-menu .sf-menu > .current-menu-ancestor > a,
+    .td-header-wrap .black-menu .sf-menu > .current-category-ancestor > a,
+    .td-header-wrap .black-menu .sf-menu > li > a:hover,
+    .td-header-wrap .black-menu .sf-menu > .sfHover > a,
+    .sf-menu > .current-menu-item > a:after,
+    .sf-menu > .current-menu-ancestor > a:after,
+    .sf-menu > .current-category-ancestor > a:after,
+    .sf-menu > li:hover > a:after,
+    .sf-menu > .sfHover > a:after,
+    .header-search-wrap .td-drop-down-search:after,
+    .header-search-wrap .td-drop-down-search .btn:hover,
+    input[type=submit]:hover,
+    .td-read-more a,
+    .td-post-category:hover,
+    .td_top_authors .td-active .td-author-post-count,
+    .td_top_authors .td-active .td-author-comments-count,
+    .td_top_authors .td_mod_wrap:hover .td-author-post-count,
+    .td_top_authors .td_mod_wrap:hover .td-author-comments-count,
+    .td-404-sub-sub-title a:hover,
+    .td-search-form-widget .wpb_button:hover,
+    .td-rating-bar-wrap div,
+    .dropcap,
+    .td_wrapper_video_playlist .td_video_controls_playlist_wrapper,
+    .wpb_default,
+    .wpb_default:hover,
+    .td-left-smart-list:hover,
+    .td-right-smart-list:hover,
+    #bbpress-forums button:hover,
+    .bbp_widget_login .button:hover,
+    .td-footer-wrapper .td-post-category,
+    .td-footer-wrapper .widget_product_search input[type="submit"]:hover,
+    .single-product .product .summary .cart .button:hover,
+    .td-next-prev-wrap a:hover,
+    .td-load-more-wrap a:hover,
+    .td-post-small-box a:hover,
+    .page-nav .current,
+    .page-nav:first-child > div,
+    #bbpress-forums .bbp-pagination .current,
+    #bbpress-forums #bbp-single-user-details #bbp-user-navigation li.current a,
+    .td-theme-slider:hover .slide-meta-cat a,
+    a.vc_btn-black:hover,
+    .td-trending-now-wrapper:hover .td-trending-now-title,
+    .td-scroll-up,
+    .td-smart-list-button:hover,
+    .td-weather-information:before,
+    .td-weather-week:before,
+    .td_block_exchange .td-exchange-header:before,
+    .td-pulldown-syle-2 .td-subcat-dropdown ul:after,
+    .td_block_template_9 .td-block-title:after,
+    .td_block_template_15 .td-block-title:before,
+    div.wpforms-container .wpforms-form div.wpforms-submit-container button[type=submit],
+    .td-close-video-fixed {
+        background-color: #1e73be;
+    }
+
+    .td_block_template_4 .td-related-title .td-cur-simple-item:before {
+        border-color: #1e73be transparent transparent transparent !important;
+    }
+    
+    
+    .td_block_template_4 .td-related-title .td-cur-simple-item,
+    .td_block_template_3 .td-related-title .td-cur-simple-item,
+    .td_block_template_9 .td-related-title:after {
+        background-color: #1e73be;
+    }
+
+    a,
+    cite a:hover,
+    .td-page-content blockquote p,
+    .td-post-content blockquote p,
+    .mce-content-body blockquote p,
+    .comment-content blockquote p,
+    .wpb_text_column blockquote p,
+    .td_block_text_with_title blockquote p,
+    .td_module_wrap:hover .entry-title a,
+    .td-subcat-filter .td-subcat-list a:hover,
+    .td-subcat-filter .td-subcat-dropdown a:hover,
+    .td_quote_on_blocks,
+    .dropcap2,
+    .dropcap3,
+    .td_top_authors .td-active .td-authors-name a,
+    .td_top_authors .td_mod_wrap:hover .td-authors-name a,
+    .td-post-next-prev-content a:hover,
+    .author-box-wrap .td-author-social a:hover,
+    .td-author-name a:hover,
+    .td-author-url a:hover,
+    .comment-reply-link:hover,
+    .logged-in-as a:hover,
+    #cancel-comment-reply-link:hover,
+    .td-search-query,
+    .widget a:hover,
+    .td_wp_recentcomments a:hover,
+    .archive .widget_archive .current,
+    .archive .widget_archive .current a,
+    .widget_calendar tfoot a:hover,
+    #bbpress-forums li.bbp-header .bbp-reply-content span a:hover,
+    #bbpress-forums .bbp-forum-freshness a:hover,
+    #bbpress-forums .bbp-topic-freshness a:hover,
+    #bbpress-forums .bbp-forums-list li a:hover,
+    #bbpress-forums .bbp-forum-title:hover,
+    #bbpress-forums .bbp-topic-permalink:hover,
+    #bbpress-forums .bbp-topic-started-by a:hover,
+    #bbpress-forums .bbp-topic-started-in a:hover,
+    #bbpress-forums .bbp-body .super-sticky li.bbp-topic-title .bbp-topic-permalink,
+    #bbpress-forums .bbp-body .sticky li.bbp-topic-title .bbp-topic-permalink,
+    .widget_display_replies .bbp-author-name,
+    .widget_display_topics .bbp-author-name,
+    .td-subfooter-menu li a:hover,
+    a.vc_btn-black:hover,
+    .td-smart-list-dropdown-wrap .td-smart-list-button:hover,
+    .td-instagram-user a,
+    .td-block-title-wrap .td-wrapper-pulldown-filter .td-pulldown-filter-display-option:hover,
+    .td-block-title-wrap .td-wrapper-pulldown-filter .td-pulldown-filter-display-option:hover i,
+    .td-block-title-wrap .td-wrapper-pulldown-filter .td-pulldown-filter-link:hover,
+    .td-block-title-wrap .td-wrapper-pulldown-filter .td-pulldown-filter-item .td-cur-simple-item,
+    .td-pulldown-syle-2 .td-subcat-dropdown:hover .td-subcat-more span,
+    .td-pulldown-syle-2 .td-subcat-dropdown:hover .td-subcat-more i,
+    .td-pulldown-syle-3 .td-subcat-dropdown:hover .td-subcat-more span,
+    .td-pulldown-syle-3 .td-subcat-dropdown:hover .td-subcat-more i,
+    .td_block_template_2 .td-related-title .td-cur-simple-item,
+    .td_block_template_5 .td-related-title .td-cur-simple-item,
+    .td_block_template_6 .td-related-title .td-cur-simple-item,
+    .td_block_template_7 .td-related-title .td-cur-simple-item,
+    .td_block_template_8 .td-related-title .td-cur-simple-item,
+    .td_block_template_9 .td-related-title .td-cur-simple-item,
+    .td_block_template_10 .td-related-title .td-cur-simple-item,
+    .td_block_template_11 .td-related-title .td-cur-simple-item,
+    .td_block_template_12 .td-related-title .td-cur-simple-item,
+    .td_block_template_13 .td-related-title .td-cur-simple-item,
+    .td_block_template_14 .td-related-title .td-cur-simple-item,
+    .td_block_template_15 .td-related-title .td-cur-simple-item,
+    .td_block_template_16 .td-related-title .td-cur-simple-item,
+    .td_block_template_17 .td-related-title .td-cur-simple-item,
+    .td-theme-wrap .sf-menu ul .td-menu-item > a:hover,
+    .td-theme-wrap .sf-menu ul .sfHover > a,
+    .td-theme-wrap .sf-menu ul .current-menu-ancestor > a,
+    .td-theme-wrap .sf-menu ul .current-category-ancestor > a,
+    .td-theme-wrap .sf-menu ul .current-menu-item > a,
+    .td_outlined_btn,
+    .td_block_categories_tags .td-ct-item:hover {
+        color: #1e73be;
+    }
+
+    a.vc_btn-black.vc_btn_square_outlined:hover,
+    a.vc_btn-black.vc_btn_outlined:hover {
+        color: #1e73be !important;
+    }
+
+    .td-next-prev-wrap a:hover,
+    .td-load-more-wrap a:hover,
+    .td-post-small-box a:hover,
+    .page-nav .current,
+    .page-nav:first-child > div,
+    #bbpress-forums .bbp-pagination .current,
+    .post .td_quote_box,
+    .page .td_quote_box,
+    a.vc_btn-black:hover,
+    .td_block_template_5 .td-block-title > *,
+    .td_outlined_btn {
+        border-color: #1e73be;
+    }
+
+    .td_wrapper_video_playlist .td_video_currently_playing:after {
+        border-color: #1e73be !important;
+    }
+
+    .header-search-wrap .td-drop-down-search:before {
+        border-color: transparent transparent #1e73be transparent;
+    }
+
+    .block-title > span,
+    .block-title > a,
+    .block-title > label,
+    .widgettitle,
+    .widgettitle:after,
+    body .td-trending-now-title,
+    .td-trending-now-wrapper:hover .td-trending-now-title,
+    .wpb_tabs li.ui-tabs-active a,
+    .wpb_tabs li:hover a,
+    .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container .vc_tta-tab.vc_active > a,
+    .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container .vc_tta-tab:hover > a,
+    .td_block_template_1 .td-related-title .td-cur-simple-item,
+    .td-subcat-filter .td-subcat-dropdown:hover .td-subcat-more, 
+    .td_3D_btn,
+    .td_shadow_btn,
+    .td_default_btn,
+    .td_round_btn, 
+    .td_outlined_btn:hover {
+    	background-color: #1e73be;
+    }
+    .block-title,
+    .td_block_template_1 .td-related-title,
+    .wpb_tabs .wpb_tabs_nav,
+    .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container {
+        border-color: #1e73be;
+    }
+    .td_block_wrap .td-subcat-item a.td-cur-simple-item {
+	    color: #1e73be;
+	}
+
+
+    
+    .td-grid-style-4 .entry-title
+    {
+        background-color: rgba(30, 115, 190, 0.7);
+    }
+
+
+    
+    .td-menu-background:before,
+    .td-search-background:before {
+        background: rgba(16,29,33,0.8);
+        background: -moz-linear-gradient(top, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(16,29,33,0.8)), color-stop(100%, rgba(11,86,89,0.8)));
+        background: -webkit-linear-gradient(top, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        background: -o-linear-gradient(top, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        background: -ms-linear-gradient(top, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        background: linear-gradient(to bottom, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(16,29,33,0.8)', endColorstr='rgba(11,86,89,0.8)', GradientType=0 );
+    }
+
+    
+    .td-mobile-content .current-menu-item > a,
+    .td-mobile-content .current-menu-ancestor > a,
+    .td-mobile-content .current-category-ancestor > a,
+    #td-mobile-nav .td-menu-login-section a:hover,
+    #td-mobile-nav .td-register-section a:hover,
+    #td-mobile-nav .td-menu-socials-wrap a:hover i,
+    .td-search-close a:hover i {
+        color: #00a392;
+    }.td-header-style-12 .td-header-menu-wrap-full,
+    .td-header-style-12 .td-affix,
+    .td-grid-style-1.td-hover-1 .td-big-grid-post:hover .td-post-category,
+    .td-grid-style-5.td-hover-1 .td-big-grid-post:hover .td-post-category,
+    .td_category_template_3 .td-current-sub-category,
+    .td_category_template_8 .td-category-header .td-category a.td-current-sub-category,
+    .td_category_template_4 .td-category-siblings .td-category a:hover,
+     .td_block_big_grid_9.td-grid-style-1 .td-post-category,
+    .td_block_big_grid_9.td-grid-style-5 .td-post-category,
+    .td-grid-style-6.td-hover-1 .td-module-thumb:after,
+     .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > li > a:hover,
+    .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > .sfHover > a {
+        background-color: #1e73be;
+    }
+    
+    .td_mega_menu_sub_cats .cur-sub-cat,
+    .td-mega-span h3 a:hover,
+    .td_mod_mega_menu:hover .entry-title a,
+    .header-search-wrap .result-msg a:hover,
+    .td-header-top-menu .td-drop-down-search .td_module_wrap:hover .entry-title a,
+    .td-header-top-menu .td-icon-search:hover,
+    .td-header-wrap .result-msg a:hover,
+    .top-header-menu li a:hover,
+    .top-header-menu .current-menu-item > a,
+    .top-header-menu .current-menu-ancestor > a,
+    .top-header-menu .current-category-ancestor > a,
+    .td-social-icon-wrap > a:hover,
+    .td-header-sp-top-widget .td-social-icon-wrap a:hover,
+    .td_mod_related_posts:hover h3 > a,
+    .td-post-template-11 .td-related-title .td-related-left:hover,
+    .td-post-template-11 .td-related-title .td-related-right:hover,
+    .td-post-template-11 .td-related-title .td-cur-simple-item,
+    .td-post-template-11 .td_block_related_posts .td-next-prev-wrap a:hover,
+    .td-category-header .td-pulldown-category-filter-link:hover,
+    .td-category-siblings .td-subcat-dropdown a:hover,
+    .td-category-siblings .td-subcat-dropdown a.td-current-sub-category,
+    .footer-text-wrap .footer-email-wrap a,
+    .footer-social-wrap a:hover,
+    .td_module_17 .td-read-more a:hover,
+    .td_module_18 .td-read-more a:hover,
+    .td_module_19 .td-post-author-name a:hover,
+    .td-pulldown-syle-2 .td-subcat-dropdown:hover .td-subcat-more span,
+    .td-pulldown-syle-2 .td-subcat-dropdown:hover .td-subcat-more i,
+    .td-pulldown-syle-3 .td-subcat-dropdown:hover .td-subcat-more span,
+    .td-pulldown-syle-3 .td-subcat-dropdown:hover .td-subcat-more i,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > .sfHover > a,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > li > a:hover {
+        color: #1e73be;
+    }
+    
+    .td-mega-menu-page .wpb_content_element ul li a:hover,
+    .td-theme-wrap .td-aj-search-results .td_module_wrap:hover .entry-title a,
+    .td-theme-wrap .header-search-wrap .result-msg a:hover {
+        color: #1e73be !important;
+    }
+    
+    .td_category_template_8 .td-category-header .td-category a.td-current-sub-category,
+    .td_category_template_4 .td-category-siblings .td-category a:hover,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > li > a:hover,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > .sfHover > a {
+        border-color: #1e73be;
+    }
+    
+    
+
+
+    
+    .td-header-wrap .td-header-top-menu-full,
+    .td-header-wrap .top-header-menu .sub-menu,
+    .tdm-header-style-1.td-header-wrap .td-header-top-menu-full,
+    .tdm-header-style-1.td-header-wrap .top-header-menu .sub-menu,
+    .tdm-header-style-2.td-header-wrap .td-header-top-menu-full,
+    .tdm-header-style-2.td-header-wrap .top-header-menu .sub-menu,
+    .tdm-header-style-3.td-header-wrap .td-header-top-menu-full,
+    .tdm-header-style-3.td-header-wrap .top-header-menu .sub-menu {
+        background-color: #ffffff;
+    }
+    .td-header-style-8 .td-header-top-menu-full {
+        background-color: transparent;
+    }
+    .td-header-style-8 .td-header-top-menu-full .td-header-top-menu {
+        background-color: #ffffff;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .td-header-wrap .td-header-top-menu-full .td-header-top-menu,
+    .td-header-wrap .td-header-top-menu-full {
+        border-bottom: none;
+    }
+
+
+    
+    .td-header-top-menu,
+    .td-header-top-menu a,
+    .td-header-wrap .td-header-top-menu-full .td-header-top-menu,
+    .td-header-wrap .td-header-top-menu-full a,
+    .td-header-style-8 .td-header-top-menu,
+    .td-header-style-8 .td-header-top-menu a,
+    .td-header-top-menu .td-drop-down-search .entry-title a {
+        color: #000000;
+    }
+
+    
+    .td-header-wrap .td-header-menu-wrap-full,
+    .td-header-menu-wrap.td-affix,
+    .td-header-style-3 .td-header-main-menu,
+    .td-header-style-3 .td-affix .td-header-main-menu,
+    .td-header-style-4 .td-header-main-menu,
+    .td-header-style-4 .td-affix .td-header-main-menu,
+    .td-header-style-8 .td-header-menu-wrap.td-affix,
+    .td-header-style-8 .td-header-top-menu-full {
+        background-color: #1e73be;
+    }
+    .td-boxed-layout .td-header-style-3 .td-header-menu-wrap,
+    .td-boxed-layout .td-header-style-4 .td-header-menu-wrap,
+    .td-header-style-3 .td_stretch_content .td-header-menu-wrap,
+    .td-header-style-4 .td_stretch_content .td-header-menu-wrap {
+    	background-color: #1e73be !important;
+    }
+    @media (min-width: 1019px) {
+        .td-header-style-1 .td-header-sp-recs,
+        .td-header-style-1 .td-header-sp-logo {
+            margin-bottom: 28px;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1018px) {
+        .td-header-style-1 .td-header-sp-recs,
+        .td-header-style-1 .td-header-sp-logo {
+            margin-bottom: 14px;
+        }
+    }
+    .td-header-style-7 .td-header-top-menu {
+        border-bottom: none;
+    }
+
+    
+    .td-header-wrap .td-header-menu-wrap .sf-menu > li > a,
+    .td-header-wrap .td-header-menu-social .td-social-icon-wrap a,
+    .td-header-style-4 .td-header-menu-social .td-social-icon-wrap i,
+    .td-header-style-5 .td-header-menu-social .td-social-icon-wrap i,
+    .td-header-style-6 .td-header-menu-social .td-social-icon-wrap i,
+    .td-header-style-12 .td-header-menu-social .td-social-icon-wrap i,
+    .td-header-wrap .header-search-wrap #td-header-search-button .td-icon-search {
+        color: #ffffff;
+    }
+    .td-header-wrap .td-header-menu-social + .td-search-wrapper #td-header-search-button:before {
+      background-color: #ffffff;
+    }
+    
+    
+    
+    .td-header-menu-wrap.td-affix,
+    .td-header-style-3 .td-affix .td-header-main-menu,
+    .td-header-style-4 .td-affix .td-header-main-menu,
+    .td-header-style-8 .td-header-menu-wrap.td-affix {
+        background-color: #1e73be;
+    }
+   
+    
+    
+    .td-affix .sf-menu > .current-menu-item > a:after,
+    .td-affix .sf-menu > .current-menu-ancestor > a:after,
+    .td-affix .sf-menu > .current-category-ancestor > a:after,
+    .td-affix .sf-menu > li:hover > a:after,
+    .td-affix .sf-menu > .sfHover > a:after,
+    .td-header-wrap .td-affix .black-menu .sf-menu > li > a:hover,
+    .td-header-wrap .td-affix .black-menu .sf-menu > .current-menu-ancestor > a,
+    .td-header-wrap .td-affix .black-menu .sf-menu > .sfHover > a,
+    .td-affix  .header-search-wrap .td-drop-down-search:after,
+    .td-affix  .header-search-wrap .td-drop-down-search .btn:hover,
+    .td-header-wrap .td-affix  .black-menu .sf-menu > .current-menu-item > a,
+    .td-header-wrap .td-affix  .black-menu .sf-menu > .current-menu-ancestor > a,
+    .td-header-wrap .td-affix  .black-menu .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > li > a:hover,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > .sfHover > a {
+        background-color: #ffffff;
+    }
+    .td-affix  .header-search-wrap .td-drop-down-search:before {
+        border-color: transparent transparent #ffffff transparent;
+    }
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > li > a:hover,
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > .sfHover > a {
+        border-color: #ffffff;
+    }
+    .td-theme-wrap .td-affix .sf-menu ul .td-menu-item > a:hover,
+    .td-theme-wrap .td-affix .sf-menu ul .sfHover > a,
+    .td-theme-wrap .td-affix .sf-menu ul .current-menu-ancestor > a,
+    .td-theme-wrap .td-affix .sf-menu ul .current-category-ancestor > a,
+    .td-theme-wrap .td-affix .sf-menu ul .current-menu-item > a,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > li > a:hover,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > .sfHover > a {
+        color: #ffffff;
+    }
+    
+    .td-header-wrap .td-header-menu-social .td-social-icon-wrap a {
+        color: #ffffff;
+    }
+    
+    .td-footer-wrapper,
+    .td-footer-wrapper .td_block_template_7 .td-block-title > *,
+    .td-footer-wrapper .td_block_template_17 .td-block-title,
+    .td-footer-wrapper .td-block-title-wrap .td-wrapper-pulldown-filter {
+        background-color: #1e73be;
+    }
+
+    
+	.td-footer-wrapper .block-title > span,
+    .td-footer-wrapper .block-title > a,
+    .td-footer-wrapper .widgettitle,
+    .td-theme-wrap .td-footer-wrapper .td-container .td-block-title > *,
+    .td-theme-wrap .td-footer-wrapper .td_block_template_6 .td-block-title:before {
+    	color: #ffffff;
+    }
+
+
+
+    
+    .top-header-menu > li > a,
+    .td-weather-top-widget .td-weather-now .td-big-degrees,
+    .td-weather-top-widget .td-weather-header .td-weather-city,
+    .td-header-sp-top-menu .td_data_time {
+        font-weight:600;
+	
+    }
+.td-header-wrap .black-menu .sf-menu > .current-menu-item > a,
+    .td-header-wrap .black-menu .sf-menu > .current-menu-ancestor > a,
+    .td-header-wrap .black-menu .sf-menu > .current-category-ancestor > a,
+    .td-header-wrap .black-menu .sf-menu > li > a:hover,
+    .td-header-wrap .black-menu .sf-menu > .sfHover > a,
+    .sf-menu > .current-menu-item > a:after,
+    .sf-menu > .current-menu-ancestor > a:after,
+    .sf-menu > .current-category-ancestor > a:after,
+    .sf-menu > li:hover > a:after,
+    .sf-menu > .sfHover > a:after,
+    .header-search-wrap .td-drop-down-search:after,
+    .header-search-wrap .td-drop-down-search .btn:hover,
+    input[type=submit]:hover,
+    .td-read-more a,
+    .td-post-category:hover,
+    .td_top_authors .td-active .td-author-post-count,
+    .td_top_authors .td-active .td-author-comments-count,
+    .td_top_authors .td_mod_wrap:hover .td-author-post-count,
+    .td_top_authors .td_mod_wrap:hover .td-author-comments-count,
+    .td-404-sub-sub-title a:hover,
+    .td-search-form-widget .wpb_button:hover,
+    .td-rating-bar-wrap div,
+    .dropcap,
+    .td_wrapper_video_playlist .td_video_controls_playlist_wrapper,
+    .wpb_default,
+    .wpb_default:hover,
+    .td-left-smart-list:hover,
+    .td-right-smart-list:hover,
+    #bbpress-forums button:hover,
+    .bbp_widget_login .button:hover,
+    .td-footer-wrapper .td-post-category,
+    .td-footer-wrapper .widget_product_search input[type="submit"]:hover,
+    .single-product .product .summary .cart .button:hover,
+    .td-next-prev-wrap a:hover,
+    .td-load-more-wrap a:hover,
+    .td-post-small-box a:hover,
+    .page-nav .current,
+    .page-nav:first-child > div,
+    #bbpress-forums .bbp-pagination .current,
+    #bbpress-forums #bbp-single-user-details #bbp-user-navigation li.current a,
+    .td-theme-slider:hover .slide-meta-cat a,
+    a.vc_btn-black:hover,
+    .td-trending-now-wrapper:hover .td-trending-now-title,
+    .td-scroll-up,
+    .td-smart-list-button:hover,
+    .td-weather-information:before,
+    .td-weather-week:before,
+    .td_block_exchange .td-exchange-header:before,
+    .td-pulldown-syle-2 .td-subcat-dropdown ul:after,
+    .td_block_template_9 .td-block-title:after,
+    .td_block_template_15 .td-block-title:before,
+    div.wpforms-container .wpforms-form div.wpforms-submit-container button[type=submit],
+    .td-close-video-fixed {
+        background-color: #1e73be;
+    }
+
+    .td_block_template_4 .td-related-title .td-cur-simple-item:before {
+        border-color: #1e73be transparent transparent transparent !important;
+    }
+    
+    
+    .td_block_template_4 .td-related-title .td-cur-simple-item,
+    .td_block_template_3 .td-related-title .td-cur-simple-item,
+    .td_block_template_9 .td-related-title:after {
+        background-color: #1e73be;
+    }
+
+    a,
+    cite a:hover,
+    .td-page-content blockquote p,
+    .td-post-content blockquote p,
+    .mce-content-body blockquote p,
+    .comment-content blockquote p,
+    .wpb_text_column blockquote p,
+    .td_block_text_with_title blockquote p,
+    .td_module_wrap:hover .entry-title a,
+    .td-subcat-filter .td-subcat-list a:hover,
+    .td-subcat-filter .td-subcat-dropdown a:hover,
+    .td_quote_on_blocks,
+    .dropcap2,
+    .dropcap3,
+    .td_top_authors .td-active .td-authors-name a,
+    .td_top_authors .td_mod_wrap:hover .td-authors-name a,
+    .td-post-next-prev-content a:hover,
+    .author-box-wrap .td-author-social a:hover,
+    .td-author-name a:hover,
+    .td-author-url a:hover,
+    .comment-reply-link:hover,
+    .logged-in-as a:hover,
+    #cancel-comment-reply-link:hover,
+    .td-search-query,
+    .widget a:hover,
+    .td_wp_recentcomments a:hover,
+    .archive .widget_archive .current,
+    .archive .widget_archive .current a,
+    .widget_calendar tfoot a:hover,
+    #bbpress-forums li.bbp-header .bbp-reply-content span a:hover,
+    #bbpress-forums .bbp-forum-freshness a:hover,
+    #bbpress-forums .bbp-topic-freshness a:hover,
+    #bbpress-forums .bbp-forums-list li a:hover,
+    #bbpress-forums .bbp-forum-title:hover,
+    #bbpress-forums .bbp-topic-permalink:hover,
+    #bbpress-forums .bbp-topic-started-by a:hover,
+    #bbpress-forums .bbp-topic-started-in a:hover,
+    #bbpress-forums .bbp-body .super-sticky li.bbp-topic-title .bbp-topic-permalink,
+    #bbpress-forums .bbp-body .sticky li.bbp-topic-title .bbp-topic-permalink,
+    .widget_display_replies .bbp-author-name,
+    .widget_display_topics .bbp-author-name,
+    .td-subfooter-menu li a:hover,
+    a.vc_btn-black:hover,
+    .td-smart-list-dropdown-wrap .td-smart-list-button:hover,
+    .td-instagram-user a,
+    .td-block-title-wrap .td-wrapper-pulldown-filter .td-pulldown-filter-display-option:hover,
+    .td-block-title-wrap .td-wrapper-pulldown-filter .td-pulldown-filter-display-option:hover i,
+    .td-block-title-wrap .td-wrapper-pulldown-filter .td-pulldown-filter-link:hover,
+    .td-block-title-wrap .td-wrapper-pulldown-filter .td-pulldown-filter-item .td-cur-simple-item,
+    .td-pulldown-syle-2 .td-subcat-dropdown:hover .td-subcat-more span,
+    .td-pulldown-syle-2 .td-subcat-dropdown:hover .td-subcat-more i,
+    .td-pulldown-syle-3 .td-subcat-dropdown:hover .td-subcat-more span,
+    .td-pulldown-syle-3 .td-subcat-dropdown:hover .td-subcat-more i,
+    .td_block_template_2 .td-related-title .td-cur-simple-item,
+    .td_block_template_5 .td-related-title .td-cur-simple-item,
+    .td_block_template_6 .td-related-title .td-cur-simple-item,
+    .td_block_template_7 .td-related-title .td-cur-simple-item,
+    .td_block_template_8 .td-related-title .td-cur-simple-item,
+    .td_block_template_9 .td-related-title .td-cur-simple-item,
+    .td_block_template_10 .td-related-title .td-cur-simple-item,
+    .td_block_template_11 .td-related-title .td-cur-simple-item,
+    .td_block_template_12 .td-related-title .td-cur-simple-item,
+    .td_block_template_13 .td-related-title .td-cur-simple-item,
+    .td_block_template_14 .td-related-title .td-cur-simple-item,
+    .td_block_template_15 .td-related-title .td-cur-simple-item,
+    .td_block_template_16 .td-related-title .td-cur-simple-item,
+    .td_block_template_17 .td-related-title .td-cur-simple-item,
+    .td-theme-wrap .sf-menu ul .td-menu-item > a:hover,
+    .td-theme-wrap .sf-menu ul .sfHover > a,
+    .td-theme-wrap .sf-menu ul .current-menu-ancestor > a,
+    .td-theme-wrap .sf-menu ul .current-category-ancestor > a,
+    .td-theme-wrap .sf-menu ul .current-menu-item > a,
+    .td_outlined_btn,
+    .td_block_categories_tags .td-ct-item:hover {
+        color: #1e73be;
+    }
+
+    a.vc_btn-black.vc_btn_square_outlined:hover,
+    a.vc_btn-black.vc_btn_outlined:hover {
+        color: #1e73be !important;
+    }
+
+    .td-next-prev-wrap a:hover,
+    .td-load-more-wrap a:hover,
+    .td-post-small-box a:hover,
+    .page-nav .current,
+    .page-nav:first-child > div,
+    #bbpress-forums .bbp-pagination .current,
+    .post .td_quote_box,
+    .page .td_quote_box,
+    a.vc_btn-black:hover,
+    .td_block_template_5 .td-block-title > *,
+    .td_outlined_btn {
+        border-color: #1e73be;
+    }
+
+    .td_wrapper_video_playlist .td_video_currently_playing:after {
+        border-color: #1e73be !important;
+    }
+
+    .header-search-wrap .td-drop-down-search:before {
+        border-color: transparent transparent #1e73be transparent;
+    }
+
+    .block-title > span,
+    .block-title > a,
+    .block-title > label,
+    .widgettitle,
+    .widgettitle:after,
+    body .td-trending-now-title,
+    .td-trending-now-wrapper:hover .td-trending-now-title,
+    .wpb_tabs li.ui-tabs-active a,
+    .wpb_tabs li:hover a,
+    .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container .vc_tta-tab.vc_active > a,
+    .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container .vc_tta-tab:hover > a,
+    .td_block_template_1 .td-related-title .td-cur-simple-item,
+    .td-subcat-filter .td-subcat-dropdown:hover .td-subcat-more, 
+    .td_3D_btn,
+    .td_shadow_btn,
+    .td_default_btn,
+    .td_round_btn, 
+    .td_outlined_btn:hover {
+    	background-color: #1e73be;
+    }
+    .block-title,
+    .td_block_template_1 .td-related-title,
+    .wpb_tabs .wpb_tabs_nav,
+    .vc_tta-container .vc_tta-color-grey.vc_tta-tabs-position-top.vc_tta-style-classic .vc_tta-tabs-container {
+        border-color: #1e73be;
+    }
+    .td_block_wrap .td-subcat-item a.td-cur-simple-item {
+	    color: #1e73be;
+	}
+
+
+    
+    .td-grid-style-4 .entry-title
+    {
+        background-color: rgba(30, 115, 190, 0.7);
+    }
+
+
+    
+    .td-menu-background:before,
+    .td-search-background:before {
+        background: rgba(16,29,33,0.8);
+        background: -moz-linear-gradient(top, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(16,29,33,0.8)), color-stop(100%, rgba(11,86,89,0.8)));
+        background: -webkit-linear-gradient(top, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        background: -o-linear-gradient(top, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        background: -ms-linear-gradient(top, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        background: linear-gradient(to bottom, rgba(16,29,33,0.8) 0%, rgba(11,86,89,0.8) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(16,29,33,0.8)', endColorstr='rgba(11,86,89,0.8)', GradientType=0 );
+    }
+
+    
+    .td-mobile-content .current-menu-item > a,
+    .td-mobile-content .current-menu-ancestor > a,
+    .td-mobile-content .current-category-ancestor > a,
+    #td-mobile-nav .td-menu-login-section a:hover,
+    #td-mobile-nav .td-register-section a:hover,
+    #td-mobile-nav .td-menu-socials-wrap a:hover i,
+    .td-search-close a:hover i {
+        color: #00a392;
+    }.td-header-style-12 .td-header-menu-wrap-full,
+    .td-header-style-12 .td-affix,
+    .td-grid-style-1.td-hover-1 .td-big-grid-post:hover .td-post-category,
+    .td-grid-style-5.td-hover-1 .td-big-grid-post:hover .td-post-category,
+    .td_category_template_3 .td-current-sub-category,
+    .td_category_template_8 .td-category-header .td-category a.td-current-sub-category,
+    .td_category_template_4 .td-category-siblings .td-category a:hover,
+     .td_block_big_grid_9.td-grid-style-1 .td-post-category,
+    .td_block_big_grid_9.td-grid-style-5 .td-post-category,
+    .td-grid-style-6.td-hover-1 .td-module-thumb:after,
+     .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > li > a:hover,
+    .tdm-menu-active-style5 .td-header-menu-wrap .sf-menu > .sfHover > a {
+        background-color: #1e73be;
+    }
+    
+    .td_mega_menu_sub_cats .cur-sub-cat,
+    .td-mega-span h3 a:hover,
+    .td_mod_mega_menu:hover .entry-title a,
+    .header-search-wrap .result-msg a:hover,
+    .td-header-top-menu .td-drop-down-search .td_module_wrap:hover .entry-title a,
+    .td-header-top-menu .td-icon-search:hover,
+    .td-header-wrap .result-msg a:hover,
+    .top-header-menu li a:hover,
+    .top-header-menu .current-menu-item > a,
+    .top-header-menu .current-menu-ancestor > a,
+    .top-header-menu .current-category-ancestor > a,
+    .td-social-icon-wrap > a:hover,
+    .td-header-sp-top-widget .td-social-icon-wrap a:hover,
+    .td_mod_related_posts:hover h3 > a,
+    .td-post-template-11 .td-related-title .td-related-left:hover,
+    .td-post-template-11 .td-related-title .td-related-right:hover,
+    .td-post-template-11 .td-related-title .td-cur-simple-item,
+    .td-post-template-11 .td_block_related_posts .td-next-prev-wrap a:hover,
+    .td-category-header .td-pulldown-category-filter-link:hover,
+    .td-category-siblings .td-subcat-dropdown a:hover,
+    .td-category-siblings .td-subcat-dropdown a.td-current-sub-category,
+    .footer-text-wrap .footer-email-wrap a,
+    .footer-social-wrap a:hover,
+    .td_module_17 .td-read-more a:hover,
+    .td_module_18 .td-read-more a:hover,
+    .td_module_19 .td-post-author-name a:hover,
+    .td-pulldown-syle-2 .td-subcat-dropdown:hover .td-subcat-more span,
+    .td-pulldown-syle-2 .td-subcat-dropdown:hover .td-subcat-more i,
+    .td-pulldown-syle-3 .td-subcat-dropdown:hover .td-subcat-more span,
+    .td-pulldown-syle-3 .td-subcat-dropdown:hover .td-subcat-more i,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > .sfHover > a,
+    .tdm-menu-active-style3 .tdm-header.td-header-wrap .sf-menu > li > a:hover {
+        color: #1e73be;
+    }
+    
+    .td-mega-menu-page .wpb_content_element ul li a:hover,
+    .td-theme-wrap .td-aj-search-results .td_module_wrap:hover .entry-title a,
+    .td-theme-wrap .header-search-wrap .result-msg a:hover {
+        color: #1e73be !important;
+    }
+    
+    .td_category_template_8 .td-category-header .td-category a.td-current-sub-category,
+    .td_category_template_4 .td-category-siblings .td-category a:hover,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > li > a:hover,
+    .tdm-menu-active-style4 .tdm-header .sf-menu > .sfHover > a {
+        border-color: #1e73be;
+    }
+    
+    
+
+
+    
+    .td-header-wrap .td-header-top-menu-full,
+    .td-header-wrap .top-header-menu .sub-menu,
+    .tdm-header-style-1.td-header-wrap .td-header-top-menu-full,
+    .tdm-header-style-1.td-header-wrap .top-header-menu .sub-menu,
+    .tdm-header-style-2.td-header-wrap .td-header-top-menu-full,
+    .tdm-header-style-2.td-header-wrap .top-header-menu .sub-menu,
+    .tdm-header-style-3.td-header-wrap .td-header-top-menu-full,
+    .tdm-header-style-3.td-header-wrap .top-header-menu .sub-menu {
+        background-color: #ffffff;
+    }
+    .td-header-style-8 .td-header-top-menu-full {
+        background-color: transparent;
+    }
+    .td-header-style-8 .td-header-top-menu-full .td-header-top-menu {
+        background-color: #ffffff;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .td-header-wrap .td-header-top-menu-full .td-header-top-menu,
+    .td-header-wrap .td-header-top-menu-full {
+        border-bottom: none;
+    }
+
+
+    
+    .td-header-top-menu,
+    .td-header-top-menu a,
+    .td-header-wrap .td-header-top-menu-full .td-header-top-menu,
+    .td-header-wrap .td-header-top-menu-full a,
+    .td-header-style-8 .td-header-top-menu,
+    .td-header-style-8 .td-header-top-menu a,
+    .td-header-top-menu .td-drop-down-search .entry-title a {
+        color: #000000;
+    }
+
+    
+    .td-header-wrap .td-header-menu-wrap-full,
+    .td-header-menu-wrap.td-affix,
+    .td-header-style-3 .td-header-main-menu,
+    .td-header-style-3 .td-affix .td-header-main-menu,
+    .td-header-style-4 .td-header-main-menu,
+    .td-header-style-4 .td-affix .td-header-main-menu,
+    .td-header-style-8 .td-header-menu-wrap.td-affix,
+    .td-header-style-8 .td-header-top-menu-full {
+        background-color: #1e73be;
+    }
+    .td-boxed-layout .td-header-style-3 .td-header-menu-wrap,
+    .td-boxed-layout .td-header-style-4 .td-header-menu-wrap,
+    .td-header-style-3 .td_stretch_content .td-header-menu-wrap,
+    .td-header-style-4 .td_stretch_content .td-header-menu-wrap {
+    	background-color: #1e73be !important;
+    }
+    @media (min-width: 1019px) {
+        .td-header-style-1 .td-header-sp-recs,
+        .td-header-style-1 .td-header-sp-logo {
+            margin-bottom: 28px;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1018px) {
+        .td-header-style-1 .td-header-sp-recs,
+        .td-header-style-1 .td-header-sp-logo {
+            margin-bottom: 14px;
+        }
+    }
+    .td-header-style-7 .td-header-top-menu {
+        border-bottom: none;
+    }
+
+    
+    .td-header-wrap .td-header-menu-wrap .sf-menu > li > a,
+    .td-header-wrap .td-header-menu-social .td-social-icon-wrap a,
+    .td-header-style-4 .td-header-menu-social .td-social-icon-wrap i,
+    .td-header-style-5 .td-header-menu-social .td-social-icon-wrap i,
+    .td-header-style-6 .td-header-menu-social .td-social-icon-wrap i,
+    .td-header-style-12 .td-header-menu-social .td-social-icon-wrap i,
+    .td-header-wrap .header-search-wrap #td-header-search-button .td-icon-search {
+        color: #ffffff;
+    }
+    .td-header-wrap .td-header-menu-social + .td-search-wrapper #td-header-search-button:before {
+      background-color: #ffffff;
+    }
+    
+    
+    
+    .td-header-menu-wrap.td-affix,
+    .td-header-style-3 .td-affix .td-header-main-menu,
+    .td-header-style-4 .td-affix .td-header-main-menu,
+    .td-header-style-8 .td-header-menu-wrap.td-affix {
+        background-color: #1e73be;
+    }
+   
+    
+    
+    .td-affix .sf-menu > .current-menu-item > a:after,
+    .td-affix .sf-menu > .current-menu-ancestor > a:after,
+    .td-affix .sf-menu > .current-category-ancestor > a:after,
+    .td-affix .sf-menu > li:hover > a:after,
+    .td-affix .sf-menu > .sfHover > a:after,
+    .td-header-wrap .td-affix .black-menu .sf-menu > li > a:hover,
+    .td-header-wrap .td-affix .black-menu .sf-menu > .current-menu-ancestor > a,
+    .td-header-wrap .td-affix .black-menu .sf-menu > .sfHover > a,
+    .td-affix  .header-search-wrap .td-drop-down-search:after,
+    .td-affix  .header-search-wrap .td-drop-down-search .btn:hover,
+    .td-header-wrap .td-affix  .black-menu .sf-menu > .current-menu-item > a,
+    .td-header-wrap .td-affix  .black-menu .sf-menu > .current-menu-ancestor > a,
+    .td-header-wrap .td-affix  .black-menu .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > li > a:hover,
+    .tdm-menu-active-style5 .tdm-header .td-header-menu-wrap.td-affix .sf-menu > .sfHover > a {
+        background-color: #ffffff;
+    }
+    .td-affix  .header-search-wrap .td-drop-down-search:before {
+        border-color: transparent transparent #ffffff transparent;
+    }
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > li > a:hover,
+    .tdm-menu-active-style4 .tdm-header .td-affix .sf-menu > .sfHover > a {
+        border-color: #ffffff;
+    }
+    .td-theme-wrap .td-affix .sf-menu ul .td-menu-item > a:hover,
+    .td-theme-wrap .td-affix .sf-menu ul .sfHover > a,
+    .td-theme-wrap .td-affix .sf-menu ul .current-menu-ancestor > a,
+    .td-theme-wrap .td-affix .sf-menu ul .current-category-ancestor > a,
+    .td-theme-wrap .td-affix .sf-menu ul .current-menu-item > a,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > .current-menu-item > a,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > .current-menu-ancestor > a,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > .current-category-ancestor > a,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > li > a:hover,
+    .tdm-menu-active-style3 .tdm-header .td-affix .sf-menu > .sfHover > a {
+        color: #ffffff;
+    }
+    
+    .td-header-wrap .td-header-menu-social .td-social-icon-wrap a {
+        color: #ffffff;
+    }
+    
+    .td-footer-wrapper,
+    .td-footer-wrapper .td_block_template_7 .td-block-title > *,
+    .td-footer-wrapper .td_block_template_17 .td-block-title,
+    .td-footer-wrapper .td-block-title-wrap .td-wrapper-pulldown-filter {
+        background-color: #1e73be;
+    }
+
+    
+	.td-footer-wrapper .block-title > span,
+    .td-footer-wrapper .block-title > a,
+    .td-footer-wrapper .widgettitle,
+    .td-theme-wrap .td-footer-wrapper .td-container .td-block-title > *,
+    .td-theme-wrap .td-footer-wrapper .td_block_template_6 .td-block-title:before {
+    	color: #ffffff;
+    }
+
+
+
+    
+    .top-header-menu > li > a,
+    .td-weather-top-widget .td-weather-now .td-big-degrees,
+    .td-weather-top-widget .td-weather-header .td-weather-city,
+    .td-header-sp-top-menu .td_data_time {
+        font-weight:600;
+	
+    }
+</style>
+
+
+
+
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "WebSite",
+                    "@id": "https://kalilinuxtutorials.com/",
+                    "name": "Home"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                    "item": {
+                    "@type": "WebPage",
+                    "@id": "https://kalilinuxtutorials.com/category/blog/",
+                    "name": "Blog"
+                }
+            }
+            ,{
+                "@type": "ListItem",
+                "position": 3,
+                    "item": {
+                    "@type": "WebPage",
+                    "@id": "https://kalilinuxtutorials.com/a-beginners-guide-to-siem/",
+                    "name": "SIEM &#8211; Security Information and Event Management Tools &#8211; A Beginner&#8217;s Guide"                                
+                }
+            }    
+        ]
+    }
+</script>
+
+<!-- Button style compiled by theme -->
+
+<style>
+    .tdm_block_column_content:hover .tdm-col-content-title-url .tdm-title,
+                .tds-button2 .tdm-btn-text,
+                .tds-button2 i,
+                .tds-button5:hover .tdm-btn-text,
+                .tds-button5:hover i,
+                .tds-button6 .tdm-btn-text,
+                .tds-button6 i,
+                .tdm_block_list .tdm-list-item i,
+                .tdm_block_pricing .tdm-pricing-feature i,
+                body .tdm-social-item i {
+                    color: #1e73be;
+                }
+                .tds-button1,
+                .tds-button6:after,
+                .tds-title2 .tdm-title-line:after,
+                .tds-title3 .tdm-title-line:after,
+                .tdm_block_pricing.tdm-pricing-featured:before,
+                .tdm_block_pricing.tds_pricing2_block.tdm-pricing-featured .tdm-pricing-header,
+                .tds-progress-bar1 .tdm-progress-bar:after,
+                .tds-progress-bar2 .tdm-progress-bar:after,
+                .tds-social3 .tdm-social-item {
+                    background-color: #1e73be;
+                }
+                .tds-button2:before,
+                .tds-button6:before,
+                .tds-progress-bar3 .tdm-progress-bar:after {
+                  border-color: #1e73be;
+                }
+                .tdm-btn-style1 {
+					background-color: #1e73be;
+				}
+				.tdm-btn-style2:before {
+				    border-color: #1e73be;
+				}
+				.tdm-btn-style2 {
+				    color: #1e73be;
+				}
+				.tdm-btn-style3 {
+				    -webkit-box-shadow: 0 2px 16px #1e73be;
+                    -moz-box-shadow: 0 2px 16px #1e73be;
+                    box-shadow: 0 2px 16px #1e73be;
+				}
+				.tdm-btn-style3:hover {
+				    -webkit-box-shadow: 0 4px 26px #1e73be;
+                    -moz-box-shadow: 0 4px 26px #1e73be;
+                    box-shadow: 0 4px 26px #1e73be;
+				}
+</style>
+
+	<style id="tdw-css-placeholder"></style></head>
+
+<body class="post-template-default single single-post postid-810 single-format-standard td-standard-pack a-beginners-guide-to-siem global-block-template-1 single_template_13 td-animation-stack-type0 td-full-layout" itemscope="itemscope" itemtype="https://schema.org/WebPage">
+
+            <div class="td-scroll-up  td-hide-scroll-up-on-mob" style="display:none;"><i class="td-icon-menu-up"></i></div>
+    
+    <div class="td-menu-background"></div>
+<div id="td-mobile-nav">
+    <div class="td-mobile-container">
+        <!-- mobile menu top section -->
+        <div class="td-menu-socials-wrap">
+            <!-- socials -->
+            <div class="td-menu-socials">
+                
+        <span class="td-social-icon-wrap">
+            <a target="_blank" rel="nofollow" href="https://www.facebook.com/kalicompletetutorials" title="Facebook">
+                <i class="td-icon-font td-icon-facebook"></i>
+            </a>
+        </span>            </div>
+            <!-- close button -->
+            <div class="td-mobile-close">
+                <a href="#" aria-label="Close"><i class="td-icon-close-mobile"></i></a>
+            </div>
+        </div>
+
+        <!-- login section -->
+        
+        <!-- menu section -->
+        <div class="td-mobile-content">
+            <div class="menu-tutorials-menu-container"><ul id="menu-tutorials-menu" class="td-mobile-main-menu"><li id="menu-item-482" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-first menu-item-482"><a href="http://kalilinuxtutorials.com">Home</a></li>
+<li id="menu-item-483" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-483"><a href="https://kalilinuxtutorials.com/about/">About</a></li>
+<li id="menu-item-481" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-481"><a title="Kali Linux Menu" href="https://kalilinuxtutorials.com/category/tuts/">Kali Linux<i class="td-icon-menu-right td-element-after"></i></a>
+<ul class="sub-menu">
+	<li id="menu-item-473" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-473"><a href="https://kalilinuxtutorials.com/category/ig/">Information Gathering</a></li>
+	<li id="menu-item-478" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-478"><a href="https://kalilinuxtutorials.com/category/va/">Vulnerability Analysis</a></li>
+	<li id="menu-item-479" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-479"><a href="https://kalilinuxtutorials.com/category/wa/">Web Application Analysis</a></li>
+	<li id="menu-item-475" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-475"><a href="https://kalilinuxtutorials.com/category/pa/">Password Attacks</a></li>
+	<li id="menu-item-480" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-480"><a href="https://kalilinuxtutorials.com/category/wl/">Wireless Attacks</a></li>
+	<li id="menu-item-136" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-136"><a href="https://kalilinuxtutorials.com/category/et/">Exploitation Tools</a></li>
+	<li id="menu-item-476" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-476"><a href="https://kalilinuxtutorials.com/category/ss/">Sniffing/Spoofing</a></li>
+	<li id="menu-item-474" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-474"><a href="https://kalilinuxtutorials.com/category/pe/">Post Exploitation</a></li>
+	<li id="menu-item-137" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-137"><a href="https://kalilinuxtutorials.com/category/f/">Forensics</a></li>
+	<li id="menu-item-477" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-477"><a href="https://kalilinuxtutorials.com/category/st/">Stress Testing</a></li>
+</ul>
+</li>
+<li id="menu-item-487" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-487"><a href="https://kalilinuxtutorials.com/products">Hacking Courses</a></li>
+<li id="menu-item-484" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-484"><a href="https://kalilinuxtutorials.com/category/blog/">Blog</a></li>
+<li id="menu-item-17625" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17625"><a href="https://cybersecuritynews.com/">Cyber News</a></li>
+</ul></div>        </div>
+    </div>
+
+    <!-- register/login section -->
+    </div>    <div class="td-search-background"></div>
+<div class="td-search-wrap-mob">
+	<div class="td-drop-down-search">
+		<form method="get" class="td-search-form" action="https://kalilinuxtutorials.com/">
+			<!-- close button -->
+			<div class="td-search-close">
+				<a href="#"><i class="td-icon-close-mobile"></i></a>
+			</div>
+			<div role="search" class="td-search-input">
+				<span>Search</span>
+				<input id="td-header-search-mob" type="text" value="" name="s" autocomplete="off" />
+			</div>
+		</form>
+		<div id="td-aj-search-mob" class="td-ajax-search-flex"></div>
+	</div>
+</div>
+
+    <div id="td-outer-wrap" class="td-theme-wrap">
+    
+        
+            <div class="tdc-header-wrap ">
+
+            <!--
+Header style 1
+-->
+
+
+<div class="td-header-wrap td-header-style-1 ">
+    
+    <div class="td-header-top-menu-full td-container-wrap ">
+        <div class="td-container td-header-row td-header-top-menu">
+            
+    <div class="top-bar-style-1">
+        
+<div class="td-header-sp-top-menu">
+
+
+	        <div class="td_data_time">
+            <div >
+
+                Wednesday, January 11, 2023
+            </div>
+        </div>
+    </div>
+        <div class="td-header-sp-top-widget">
+    
+    </div>    </div>
+
+<!-- LOGIN MODAL -->
+
+                <div  id="login-form" class="white-popup-block mfp-hide mfp-with-anim">
+                    <div class="td-login-wrap">
+                        <a href="#" aria-label="Back" class="td-back-button"><i class="td-icon-modal-back"></i></a>
+                        <div id="td-login-div" class="td-login-form-div td-display-block">
+                            <div class="td-login-panel-title">Sign in</div>
+                            <div class="td-login-panel-descr">Welcome! Log into your account</div>
+                            <div class="td_display_err"></div>
+                            <form action="#" method="post">
+                            <div class="td-login-inputs"><input class="td-login-input" autocomplete="username" type="text" name="login_email" id="login_email" value="" required><label for="login_email">your username</label></div>
+	                        <div class="td-login-inputs"><input class="td-login-input" autocomplete="current-password" type="password" name="login_pass" id="login_pass" value="" required><label for="login_pass">your password</label></div>
+                            <input type="button" name="login_button" id="login_button" class="wpb_button btn td-login-button" value="Login">
+                            </form>
+                            <div class="td-login-info-text"><a href="#" id="forgot-pass-link">Forgot your password? Get help</a></div>
+                            
+                            
+                            
+                            
+                        </div>
+
+                        
+
+                         <div id="td-forgot-pass-div" class="td-login-form-div td-display-none">
+                            <div class="td-login-panel-title">Password recovery</div>
+                            <div class="td-login-panel-descr">Recover your password</div>
+                            <div class="td_display_err"></div>
+                            <div class="td-login-inputs"><input class="td-login-input" type="text" name="forgot_email" id="forgot_email" value="" required><label for="forgot_email">your email</label></div>
+                            <input type="button" name="forgot_button" id="forgot_button" class="wpb_button btn td-login-button" value="Send My Password">
+                            <div class="td-login-info-text">A password will be e-mailed to you.</div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                        </div>
+    </div>
+
+    <div class="td-banner-wrap-full td-logo-wrap-full td-container-wrap ">
+        <div class="td-container td-header-row td-header-header">
+            <div class="td-header-sp-logo">
+                        <a class="td-main-logo" href="https://kalilinuxtutorials.com/">
+            <img class="td-retina-data" data-retina="https://1.bp.blogspot.com/-bZ48PWBUikE/YSYJS0Xi0rI/AAAAAAAAOkU/3EsSKyVnKFAezIDTMEhClloiuikIUjgjQCLcBGAsYHQ/s16000/Kali%2BTutorials.png" src="https://1.bp.blogspot.com/-bZ48PWBUikE/YSYJS0Xi0rI/AAAAAAAAOkU/3EsSKyVnKFAezIDTMEhClloiuikIUjgjQCLcBGAsYHQ/s16000/Kali%2BTutorials.png" alt=""/>
+            <span class="td-visual-hidden">Kali Linux Tutorials</span>
+        </a>
+                </div>
+                            <div class="td-header-sp-recs">
+                    <div class="td-header-rec-wrap">
+    <div class="td-a-rec td-a-rec-id-header  tdi_1 td_block_template_1">
+<style>
+/* custom css */
+.tdi_1.td-a-rec{
+					text-align: center;
+				}.tdi_1 .td-element-style{
+					z-index: -1;
+				}.tdi_1.td-a-rec-img{
+				    text-align: left;
+				}.tdi_1.td-a-rec-img img{
+                    margin: 0 auto 0 0;
+                }@media (max-width: 767px) {
+				    .tdi_1.td-a-rec-img {
+				        text-align: center;
+				    }
+                }
+</style><a href="https://bit.ly/3v8iBi7">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ5jEdwmKOHuyKLhAxLJPJ-ZUfpa_aHcNYDmshc7FKF6aMlQAX-tLsuc37T1B5De0wZ8_C3M5bL9_e5Rx5QmJ6zl4z7Q-lgSJQXUcATJrahIxzq_Os3NkS_t5LHYvaFIFz1_jsGXGrhhOKTHddbn10HMAZM9YH4CDnuZ5UIuw8nloJYQcPZdn064qwrg/s16000/Indusface%20banner%20728.png"></a></div>
+</div>                </div>
+                    </div>
+    </div>
+
+    <div class="td-header-menu-wrap-full td-container-wrap ">
+        
+        <div class="td-header-menu-wrap td-header-gradient ">
+            <div class="td-container td-header-row td-header-main-menu">
+                <div id="td-header-menu" role="navigation">
+    <div id="td-top-mobile-toggle"><a href="#"><i class="td-icon-font td-icon-mobile"></i></a></div>
+    <div class="td-main-menu-logo td-logo-in-header">
+        		<a class="td-mobile-logo td-sticky-disable" href="https://kalilinuxtutorials.com/">
+			<img src="https://1.bp.blogspot.com/-bZ48PWBUikE/YSYJS0Xi0rI/AAAAAAAAOkU/3EsSKyVnKFAezIDTMEhClloiuikIUjgjQCLcBGAsYHQ/s16000/Kali%2BTutorials.png" alt=""/>
+		</a>
+			<a class="td-header-logo td-sticky-disable" href="https://kalilinuxtutorials.com/">
+			<img class="td-retina-data" data-retina="https://1.bp.blogspot.com/-bZ48PWBUikE/YSYJS0Xi0rI/AAAAAAAAOkU/3EsSKyVnKFAezIDTMEhClloiuikIUjgjQCLcBGAsYHQ/s16000/Kali%2BTutorials.png" src="https://1.bp.blogspot.com/-bZ48PWBUikE/YSYJS0Xi0rI/AAAAAAAAOkU/3EsSKyVnKFAezIDTMEhClloiuikIUjgjQCLcBGAsYHQ/s16000/Kali%2BTutorials.png" alt=""/>
+		</a>
+	    </div>
+    <div class="menu-tutorials-menu-container"><ul id="menu-tutorials-menu-1" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-first td-menu-item td-normal-menu menu-item-482"><a href="http://kalilinuxtutorials.com">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-483"><a href="https://kalilinuxtutorials.com/about/">About</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children td-menu-item td-normal-menu menu-item-481"><a title="Kali Linux Menu" href="https://kalilinuxtutorials.com/category/tuts/">Kali Linux</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-473"><a href="https://kalilinuxtutorials.com/category/ig/">Information Gathering</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-478"><a href="https://kalilinuxtutorials.com/category/va/">Vulnerability Analysis</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-479"><a href="https://kalilinuxtutorials.com/category/wa/">Web Application Analysis</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-475"><a href="https://kalilinuxtutorials.com/category/pa/">Password Attacks</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-480"><a href="https://kalilinuxtutorials.com/category/wl/">Wireless Attacks</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-136"><a href="https://kalilinuxtutorials.com/category/et/">Exploitation Tools</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-476"><a href="https://kalilinuxtutorials.com/category/ss/">Sniffing/Spoofing</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-474"><a href="https://kalilinuxtutorials.com/category/pe/">Post Exploitation</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-137"><a href="https://kalilinuxtutorials.com/category/f/">Forensics</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category td-menu-item td-normal-menu menu-item-477"><a href="https://kalilinuxtutorials.com/category/st/">Stress Testing</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-487"><a href="https://kalilinuxtutorials.com/products">Hacking Courses</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent td-menu-item td-normal-menu menu-item-484"><a href="https://kalilinuxtutorials.com/category/blog/">Blog</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-17625"><a href="https://cybersecuritynews.com/">Cyber News</a></li>
+</ul></div></div>
+
+
+    <div class="header-search-wrap">
+        <div class="td-search-btns-wrap">
+            <a id="td-header-search-button" href="#" role="button" class="dropdown-toggle " data-toggle="dropdown"><i class="td-icon-search"></i></a>
+            <a id="td-header-search-button-mob" href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="td-icon-search"></i></a>
+        </div>
+
+        <div class="td-drop-down-search" aria-labelledby="td-header-search-button">
+            <form method="get" class="td-search-form" action="https://kalilinuxtutorials.com/">
+                <div role="search" class="td-head-form-search-wrap">
+                    <input id="td-header-search" type="text" value="" name="s" autocomplete="off" /><input class="wpb_button wpb_btn-inverse btn" type="submit" id="td-header-search-top" value="Search" />
+                </div>
+            </form>
+            <div id="td-aj-search"></div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+            </div>
+
+            
+<div class="td-main-content-wrap td-container-wrap">
+    <div class="td-container td-post-template-13">
+        <article id="post-810" class="post-810 post type-post status-publish format-standard has-post-thumbnail hentry category-blog tag-corporate-security tag-enterprise-security tag-log-management tag-network-security tag-security tag-security-analysis tag-siem" itemscope itemtype="https://schema.org/Article">
+            <div class="td-pb-row">
+                <div class="td-pb-span12">
+                    <div class="td-post-header">
+                        <div class="td-crumb-container"><div class="entry-crumbs"><span><a title="" class="entry-crumb" href="https://kalilinuxtutorials.com/">Home</a></span> <i class="td-icon-right td-bread-sep"></i> <span><a title="View all posts in Blog" class="entry-crumb" href="https://kalilinuxtutorials.com/category/blog/">Blog</a></span> <i class="td-icon-right td-bread-sep td-bred-no-url-last"></i> <span class="td-bred-no-url-last">SIEM &#8211; Security Information and Event Management Tools &#8211; A Beginner&#8217;s Guide</span></div></div>
+
+                        
+                        <header class="td-post-title">
+                            <ul class="td-category"><li class="entry-category"><a  href="https://kalilinuxtutorials.com/category/blog/">Blog</a></li></ul>                            <h1 class="entry-title">SIEM &#8211; Security Information and Event Management Tools &#8211; A Beginner&#8217;s Guide</h1>
+
+                            
+
+                            <div class="td-module-meta-info">
+                                <div class="td-post-author-name"><div class="td-author-by">By</div> <a href="https://kalilinuxtutorials.com/author/ravisankar/">Ravi Sankar</a><div class="td-author-line"> - </div> </div>                                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2022-12-15T07:33:00+00:00" >December 15, 2022</time></span>                                                                                            </div>
+
+                        </header>
+
+                        <div class="td-post-sharing-top"><div id="td_social_sharing_article_top" class="td-post-sharing td-ps-bg td-ps-notext td-post-sharing-style1 ">
+		<style>
+            .td-post-sharing-classic {
+                position: relative;
+                height: 20px;
+            }
+            .td-post-sharing {
+                margin-left: -3px;
+                margin-right: -3px;
+                font-family: 'Open Sans', 'Open Sans Regular', sans-serif;
+                z-index: 2;
+                white-space: nowrap;
+                opacity: 0;
+            }
+            .td-post-sharing.td-social-show-all {
+                white-space: normal;
+            }
+            .td-js-loaded .td-post-sharing {
+                -webkit-transition: opacity 0.3s;
+                transition: opacity 0.3s;
+                opacity: 1;
+            }
+            .td-post-sharing-classic + .td-post-sharing {
+                margin-top: 15px;
+                /* responsive portrait phone */
+            }
+            @media (max-width: 767px) {
+                .td-post-sharing-classic + .td-post-sharing {
+                    margin-top: 8px;
+                }
+            }
+            .td-post-sharing-top {
+                margin-bottom: 30px;
+            }
+            @media (max-width: 767px) {
+                .td-post-sharing-top {
+                    margin-bottom: 20px;
+                }
+            }
+            .td-post-sharing-bottom {
+                border-style: solid;
+                border-color: #ededed;
+                border-width: 1px 0;
+                padding: 21px 0;
+                margin-bottom: 42px;
+            }
+            .td-post-sharing-bottom .td-post-sharing {
+                margin-bottom: -7px;
+            }
+            .td-post-sharing-visible,
+            .td-social-sharing-hidden {
+                display: inline-block;
+            }
+            .td-social-sharing-hidden ul {
+                display: none;
+            }
+            .td-social-show-all .td-pulldown-filter-list {
+                display: inline-block;
+            }
+            .td-social-network,
+            .td-social-handler {
+                position: relative;
+                display: inline-block;
+                margin: 0 3px 7px;
+                height: 40px;
+                min-width: 40px;
+                font-size: 11px;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .td-ps-notext .td-social-network .td-social-but-icon,
+            .td-ps-notext .td-social-handler .td-social-but-icon {
+                border-top-right-radius: 2px;
+                border-bottom-right-radius: 2px;
+            }
+            .td-social-network {
+                color: #000;
+                overflow: hidden;
+            }
+            .td-social-network .td-social-but-icon {
+                border-top-left-radius: 2px;
+                border-bottom-left-radius: 2px;
+            }
+            .td-social-network .td-social-but-text {
+                border-top-right-radius: 2px;
+                border-bottom-right-radius: 2px;
+            }
+            .td-social-network:hover {
+                opacity: 0.8 !important;
+            }
+            .td-social-handler {
+                color: #444;
+                border: 1px solid #e9e9e9;
+                border-radius: 2px;
+            }
+            .td-social-handler .td-social-but-text {
+                font-weight: 700;
+            }
+            .td-social-handler .td-social-but-text:before {
+                background-color: #000;
+                opacity: 0.08;
+            }
+            .td-social-share-text {
+                margin-right: 18px;
+            }
+            .td-social-share-text:before,
+            .td-social-share-text:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                left: 100%;
+                width: 0;
+                height: 0;
+                border-style: solid;
+            }
+            .td-social-share-text:before {
+                border-width: 9px 0 9px 11px;
+                border-color: transparent transparent transparent #e9e9e9;
+            }
+            .td-social-share-text:after {
+                border-width: 8px 0 8px 10px;
+                border-color: transparent transparent transparent #fff;
+            }
+            .td-social-but-text,
+            .td-social-but-icon {
+                display: inline-block;
+                position: relative;
+            }
+            .td-social-but-icon {
+                padding-left: 13px;
+                padding-right: 13px;
+                line-height: 40px;
+                z-index: 1;
+            }
+            .td-social-but-icon i {
+                position: relative;
+                top: -1px;
+                vertical-align: middle;
+            }
+            .td-social-but-text {
+                margin-left: -6px;
+                padding-left: 12px;
+                padding-right: 17px;
+                line-height: 40px;
+            }
+            .td-social-but-text:before {
+                content: '';
+                position: absolute;
+                top: 12px;
+                left: 0;
+                width: 1px;
+                height: 16px;
+                background-color: #fff;
+                opacity: 0.2;
+                z-index: 1;
+            }
+            .td-social-handler i,
+            .td-social-facebook i,
+            .td-social-reddit i,
+            .td-social-linkedin i,
+            .td-social-tumblr i,
+            .td-social-stumbleupon i,
+            .td-social-vk i,
+            .td-social-viber i {
+                font-size: 14px;
+            }
+            .td-social-telegram i {
+                font-size: 16px;
+            }
+            .td-social-mail i,
+            .td-social-line i,
+            .td-social-print i {
+                font-size: 15px;
+            }
+            .td-social-handler .td-icon-share {
+                top: -1px;
+                left: -1px;
+            }
+            .td-social-twitter .td-icon-twitter {
+                font-size: 12px;
+            }
+            .td-social-pinterest .td-icon-pinterest {
+                font-size: 13px;
+            }
+            .td-social-whatsapp .td-icon-whatsapp {
+                font-size: 18px;
+            }
+            .td-social-reddit .td-social-but-icon {
+                padding-right: 12px;
+            }
+            .td-social-reddit .td-icon-reddit {
+                left: -1px;
+            }
+            .td-social-telegram .td-social-but-icon {
+                padding-right: 12px;
+            }
+            .td-social-telegram .td-icon-telegram {
+                left: -1px;
+            }
+            .td-social-stumbleupon .td-social-but-icon {
+                padding-right: 11px;
+            }
+            .td-social-stumbleupon .td-icon-stumbleupon {
+                left: -2px;
+            }
+            .td-social-digg .td-social-but-icon {
+                padding-right: 11px;
+            }
+            .td-social-digg .td-icon-digg {
+                left: -2px;
+                font-size: 17px;
+            }
+            .td-social-vk .td-social-but-icon {
+                padding-right: 11px;
+            }
+            .td-social-vk .td-icon-vk {
+                left: -2px;
+            }
+            .td-social-naver .td-icon-naver {
+                left: -1px;
+                font-size: 16px;
+            }
+            .td-social-expand-tabs i {
+                top: -2px;
+                left: -1px;
+                font-size: 16px;
+            }
+            @media (min-width: 767px) {
+                .td-social-line,
+                .td-social-viber {
+                    display: none;
+                }
+            }
+            .td-ps-bg .td-social-network {
+                color: #fff;
+            }
+            .td-ps-bg .td-social-facebook .td-social-but-icon,
+            .td-ps-bg .td-social-facebook .td-social-but-text {
+                background-color: #516eab;
+            }
+            .td-ps-bg .td-social-twitter .td-social-but-icon,
+            .td-ps-bg .td-social-twitter .td-social-but-text {
+                background-color: #29c5f6;
+            }
+            .td-ps-bg .td-social-pinterest .td-social-but-icon,
+            .td-ps-bg .td-social-pinterest .td-social-but-text {
+                background-color: #ca212a;
+            }
+            .td-ps-bg .td-social-whatsapp .td-social-but-icon,
+            .td-ps-bg .td-social-whatsapp .td-social-but-text {
+                background-color: #7bbf6a;
+            }
+            .td-ps-bg .td-social-reddit .td-social-but-icon,
+            .td-ps-bg .td-social-reddit .td-social-but-text {
+                background-color: #f54200;
+            }
+            .td-ps-bg .td-social-mail .td-social-but-icon,
+            .td-ps-bg .td-social-digg .td-social-but-icon,
+            .td-ps-bg .td-social-mail .td-social-but-text,
+            .td-ps-bg .td-social-digg .td-social-but-text {
+                background-color: #000;
+            }
+            .td-ps-bg .td-social-print .td-social-but-icon,
+            .td-ps-bg .td-social-print .td-social-but-text {
+                background-color: #333;
+            }
+            .td-ps-bg .td-social-linkedin .td-social-but-icon,
+            .td-ps-bg .td-social-linkedin .td-social-but-text {
+                background-color: #0266a0;
+            }
+            .td-ps-bg .td-social-tumblr .td-social-but-icon,
+            .td-ps-bg .td-social-tumblr .td-social-but-text {
+                background-color: #3e5a70;
+            }
+            .td-ps-bg .td-social-telegram .td-social-but-icon,
+            .td-ps-bg .td-social-telegram .td-social-but-text {
+                background-color: #179cde;
+            }
+            .td-ps-bg .td-social-stumbleupon .td-social-but-icon,
+            .td-ps-bg .td-social-stumbleupon .td-social-but-text {
+                background-color: #ee4813;
+            }
+            .td-ps-bg .td-social-vk .td-social-but-icon,
+            .td-ps-bg .td-social-vk .td-social-but-text {
+                background-color: #4c75a3;
+            }
+            .td-ps-bg .td-social-line .td-social-but-icon,
+            .td-ps-bg .td-social-line .td-social-but-text {
+                background-color: #00b900;
+            }
+            .td-ps-bg .td-social-viber .td-social-but-icon,
+            .td-ps-bg .td-social-viber .td-social-but-text {
+                background-color: #5d54a4;
+            }
+            .td-ps-bg .td-social-naver .td-social-but-icon,
+            .td-ps-bg .td-social-naver .td-social-but-text {
+                background-color: #3ec729;
+            }
+            .td-ps-dark-bg .td-social-network {
+                color: #fff;
+            }
+            .td-ps-dark-bg .td-social-network .td-social-but-icon,
+            .td-ps-dark-bg .td-social-network .td-social-but-text {
+                background-color: #000;
+            }
+            .td-ps-border .td-social-network .td-social-but-icon,
+            .td-ps-border .td-social-network .td-social-but-text {
+                line-height: 38px;
+                border-width: 1px;
+                border-style: solid;
+            }
+            .td-ps-border .td-social-network .td-social-but-text {
+                border-left-width: 0;
+            }
+            .td-ps-border .td-social-network .td-social-but-text:before {
+                background-color: #000;
+                opacity: 0.08;
+            }
+            .td-ps-border.td-ps-padding .td-social-network .td-social-but-icon {
+                border-right-width: 0;
+            }
+            .td-ps-border.td-ps-padding .td-social-network.td-social-expand-tabs .td-social-but-icon {
+                border-right-width: 1px;
+            }
+            .td-ps-border-grey .td-social-but-icon,
+            .td-ps-border-grey .td-social-but-text {
+                border-color: #e9e9e9;
+            }
+            .td-ps-border-colored .td-social-facebook .td-social-but-icon,
+            .td-ps-border-colored .td-social-facebook .td-social-but-text {
+                border-color: #516eab;
+            }
+            .td-ps-border-colored .td-social-twitter .td-social-but-icon,
+            .td-ps-border-colored .td-social-twitter .td-social-but-text {
+                border-color: #29c5f6;
+            }
+            .td-ps-border-colored .td-social-pinterest .td-social-but-icon,
+            .td-ps-border-colored .td-social-pinterest .td-social-but-text {
+                border-color: #ca212a;
+            }
+            .td-ps-border-colored .td-social-whatsapp .td-social-but-icon,
+            .td-ps-border-colored .td-social-whatsapp .td-social-but-text {
+                border-color: #7bbf6a;
+            }
+            .td-ps-border-colored .td-social-reddit .td-social-but-icon,
+            .td-ps-border-colored .td-social-reddit .td-social-but-text {
+                border-color: #f54200;
+            }
+            .td-ps-border-colored .td-social-mail .td-social-but-icon,
+            .td-ps-border-colored .td-social-digg .td-social-but-icon,
+            .td-ps-border-colored .td-social-mail .td-social-but-text,
+            .td-ps-border-colored .td-social-digg .td-social-but-text {
+                border-color: #000;
+            }
+            .td-ps-border-colored .td-social-print .td-social-but-icon,
+            .td-ps-border-colored .td-social-print .td-social-but-text {
+                border-color: #333;
+            }
+            .td-ps-border-colored .td-social-linkedin .td-social-but-icon,
+            .td-ps-border-colored .td-social-linkedin .td-social-but-text {
+                border-color: #0266a0;
+            }
+            .td-ps-border-colored .td-social-tumblr .td-social-but-icon,
+            .td-ps-border-colored .td-social-tumblr .td-social-but-text {
+                border-color: #3e5a70;
+            }
+            .td-ps-border-colored .td-social-telegram .td-social-but-icon,
+            .td-ps-border-colored .td-social-telegram .td-social-but-text {
+                border-color: #179cde;
+            }
+            .td-ps-border-colored .td-social-stumbleupon .td-social-but-icon,
+            .td-ps-border-colored .td-social-stumbleupon .td-social-but-text {
+                border-color: #ee4813;
+            }
+            .td-ps-border-colored .td-social-vk .td-social-but-icon,
+            .td-ps-border-colored .td-social-vk .td-social-but-text {
+                border-color: #4c75a3;
+            }
+            .td-ps-border-colored .td-social-line .td-social-but-icon,
+            .td-ps-border-colored .td-social-line .td-social-but-text {
+                border-color: #00b900;
+            }
+            .td-ps-border-colored .td-social-viber .td-social-but-icon,
+            .td-ps-border-colored .td-social-viber .td-social-but-text {
+                border-color: #5d54a4;
+            }
+            .td-ps-border-colored .td-social-viber .td-social-but-icon,
+            .td-ps-border-colored .td-social-viber .td-social-but-text {
+                border-color: #3ec729;
+            }
+            .td-ps-icon-bg .td-social-but-icon {
+                height: 100%;
+                border-color: transparent !important;
+            }
+            .td-ps-icon-bg .td-social-network .td-social-but-icon {
+                color: #fff;
+            }
+            .td-ps-icon-bg .td-social-facebook .td-social-but-icon {
+                background-color: #516eab;
+            }
+            .td-ps-icon-bg .td-social-twitter .td-social-but-icon {
+                background-color: #29c5f6;
+            }
+            .td-ps-icon-bg .td-social-pinterest .td-social-but-icon {
+                background-color: #ca212a;
+            }
+            .td-ps-icon-bg .td-social-whatsapp .td-social-but-icon {
+                background-color: #7bbf6a;
+            }
+            .td-ps-icon-bg .td-social-reddit .td-social-but-icon {
+                background-color: #f54200;
+            }
+            .td-ps-icon-bg .td-social-mail .td-social-but-icon,
+            .td-ps-icon-bg .td-social-digg .td-social-but-icon {
+                background-color: #000;
+            }
+            .td-ps-icon-bg .td-social-print .td-social-but-icon {
+                background-color: #333;
+            }
+            .td-ps-icon-bg .td-social-linkedin .td-social-but-icon {
+                background-color: #0266a0;
+            }
+            .td-ps-icon-bg .td-social-tumblr .td-social-but-icon {
+                background-color: #3e5a70;
+            }
+            .td-ps-icon-bg .td-social-telegram .td-social-but-icon {
+                background-color: #179cde;
+            }
+            .td-ps-icon-bg .td-social-stumbleupon .td-social-but-icon {
+                background-color: #ee4813;
+            }
+            .td-ps-icon-bg .td-social-vk .td-social-but-icon {
+                background-color: #4c75a3;
+            }
+            .td-ps-icon-bg .td-social-line .td-social-but-icon {
+                background-color: #00b900;
+            }
+            .td-ps-icon-bg .td-social-viber .td-social-but-icon {
+                background-color: #5d54a4;
+            }
+            .td-ps-icon-bg .td-social-naver .td-social-but-icon {
+                background-color: #3ec729;
+            }
+            .td-ps-icon-bg .td-social-but-text {
+                margin-left: -3px;
+            }
+            .td-ps-icon-bg .td-social-network .td-social-but-text:before {
+                display: none;
+            }
+            .td-ps-icon-arrow .td-social-network .td-social-but-icon:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                left: calc(100% + 1px);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 9px 0 9px 11px;
+                border-color: transparent transparent transparent #000;
+            }
+            .td-ps-icon-arrow .td-social-network .td-social-but-text {
+                padding-left: 20px;
+            }
+            .td-ps-icon-arrow .td-social-network .td-social-but-text:before {
+                display: none;
+            }
+            .td-ps-icon-arrow.td-ps-padding .td-social-network .td-social-but-icon:after {
+                left: 100%;
+            }
+            .td-ps-icon-arrow .td-social-facebook .td-social-but-icon:after {
+                border-left-color: #516eab;
+            }
+            .td-ps-icon-arrow .td-social-twitter .td-social-but-icon:after {
+                border-left-color: #29c5f6;
+            }
+            .td-ps-icon-arrow .td-social-pinterest .td-social-but-icon:after {
+                border-left-color: #ca212a;
+            }
+            .td-ps-icon-arrow .td-social-whatsapp .td-social-but-icon:after {
+                border-left-color: #7bbf6a;
+            }
+            .td-ps-icon-arrow .td-social-reddit .td-social-but-icon:after {
+                border-left-color: #f54200;
+            }
+            .td-ps-icon-arrow .td-social-mail .td-social-but-icon:after,
+            .td-ps-icon-arrow .td-social-digg .td-social-but-icon:after {
+                border-left-color: #000;
+            }
+            .td-ps-icon-arrow .td-social-print .td-social-but-icon:after {
+                border-left-color: #333;
+            }
+            .td-ps-icon-arrow .td-social-linkedin .td-social-but-icon:after {
+                border-left-color: #0266a0;
+            }
+            .td-ps-icon-arrow .td-social-tumblr .td-social-but-icon:after {
+                border-left-color: #3e5a70;
+            }
+            .td-ps-icon-arrow .td-social-telegram .td-social-but-icon:after {
+                border-left-color: #179cde;
+            }
+            .td-ps-icon-arrow .td-social-stumbleupon .td-social-but-icon:after {
+                border-left-color: #ee4813;
+            }
+            .td-ps-icon-arrow .td-social-vk .td-social-but-icon:after {
+                border-left-color: #4c75a3;
+            }
+            .td-ps-icon-arrow .td-social-line .td-social-but-icon:after {
+                border-left-color: #00b900;
+            }
+            .td-ps-icon-arrow .td-social-viber .td-social-but-icon:after {
+                border-left-color: #5d54a4;
+            }
+            .td-ps-icon-arrow .td-social-naver .td-social-but-icon:after {
+                border-left-color: #3ec729;
+            }
+            .td-ps-icon-arrow .td-social-expand-tabs .td-social-but-icon:after {
+                display: none;
+            }
+            .td-ps-icon-color .td-social-facebook .td-social-but-icon {
+                color: #516eab;
+            }
+            .td-ps-icon-color .td-social-twitter .td-social-but-icon {
+                color: #29c5f6;
+            }
+            .td-ps-icon-color .td-social-pinterest .td-social-but-icon {
+                color: #ca212a;
+            }
+            .td-ps-icon-color .td-social-whatsapp .td-social-but-icon {
+                color: #7bbf6a;
+            }
+            .td-ps-icon-color .td-social-reddit .td-social-but-icon {
+                color: #f54200;
+            }
+            .td-ps-icon-color .td-social-mail .td-social-but-icon,
+            .td-ps-icon-color .td-social-digg .td-social-but-icon {
+                color: #000;
+            }
+            .td-ps-icon-color .td-social-print .td-social-but-icon {
+                color: #333;
+            }
+            .td-ps-icon-color .td-social-linkedin .td-social-but-icon {
+                color: #0266a0;
+            }
+            .td-ps-icon-color .td-social-tumblr .td-social-but-icon {
+                color: #3e5a70;
+            }
+            .td-ps-icon-color .td-social-telegram .td-social-but-icon {
+                color: #179cde;
+            }
+            .td-ps-icon-color .td-social-stumbleupon .td-social-but-icon {
+                color: #ee4813;
+            }
+            .td-ps-icon-color .td-social-vk .td-social-but-icon {
+                color: #4c75a3;
+            }
+            .td-ps-icon-color .td-social-line .td-social-but-icon {
+                color: #00b900;
+            }
+            .td-ps-icon-color .td-social-viber .td-social-but-icon {
+                color: #5d54a4;
+            }
+            .td-ps-icon-color .td-social-naver .td-social-but-icon {
+                color: #3ec729;
+            }
+            .td-ps-text-color .td-social-but-text {
+                font-weight: 700;
+            }
+            .td-ps-text-color .td-social-facebook .td-social-but-text {
+                color: #516eab;
+            }
+            .td-ps-text-color .td-social-twitter .td-social-but-text {
+                color: #29c5f6;
+            }
+            .td-ps-text-color .td-social-pinterest .td-social-but-text {
+                color: #ca212a;
+            }
+            .td-ps-text-color .td-social-whatsapp .td-social-but-text {
+                color: #7bbf6a;
+            }
+            .td-ps-text-color .td-social-reddit .td-social-but-text {
+                color: #f54200;
+            }
+            .td-ps-text-color .td-social-mail .td-social-but-text,
+            .td-ps-text-color .td-social-digg .td-social-but-text {
+                color: #000;
+            }
+            .td-ps-text-color .td-social-print .td-social-but-text {
+                color: #333;
+            }
+            .td-ps-text-color .td-social-linkedin .td-social-but-text {
+                color: #0266a0;
+            }
+            .td-ps-text-color .td-social-tumblr .td-social-but-text {
+                color: #3e5a70;
+            }
+            .td-ps-text-color .td-social-telegram .td-social-but-text {
+                color: #179cde;
+            }
+            .td-ps-text-color .td-social-stumbleupon .td-social-but-text {
+                color: #ee4813;
+            }
+            .td-ps-text-color .td-social-vk .td-social-but-text {
+                color: #4c75a3;
+            }
+            .td-ps-text-color .td-social-line .td-social-but-text {
+                color: #00b900;
+            }
+            .td-ps-text-color .td-social-viber .td-social-but-text {
+                color: #5d54a4;
+            }
+            .td-ps-text-color .td-social-naver .td-social-but-text {
+                color: #3ec729;
+            }
+            .td-ps-text-color .td-social-expand-tabs .td-social-but-text {
+                color: #b1b1b1;
+            }
+            .td-ps-notext .td-social-but-icon {
+                width: 40px;
+            }
+            .td-ps-notext .td-social-network .td-social-but-text {
+                display: none;
+            }
+            .td-ps-padding .td-social-network .td-social-but-icon {
+                padding-left: 17px;
+                padding-right: 17px;
+            }
+            .td-ps-padding .td-social-handler .td-social-but-icon {
+                width: 40px;
+            }
+            .td-ps-padding .td-social-reddit .td-social-but-icon,
+            .td-ps-padding .td-social-telegram .td-social-but-icon {
+                padding-right: 16px;
+            }
+            .td-ps-padding .td-social-stumbleupon .td-social-but-icon,
+            .td-ps-padding .td-social-digg .td-social-but-icon,
+            .td-ps-padding .td-social-expand-tabs .td-social-but-icon {
+                padding-right: 13px;
+            }
+            .td-ps-padding .td-social-vk .td-social-but-icon {
+                padding-right: 14px;
+            }
+            .td-ps-padding .td-social-expand-tabs .td-social-but-icon {
+                padding-left: 13px;
+            }
+            .td-ps-rounded .td-social-network .td-social-but-icon {
+                border-top-left-radius: 100px;
+                border-bottom-left-radius: 100px;
+            }
+            .td-ps-rounded .td-social-network .td-social-but-text {
+                border-top-right-radius: 100px;
+                border-bottom-right-radius: 100px;
+            }
+            .td-ps-rounded.td-ps-notext .td-social-network .td-social-but-icon {
+                border-top-right-radius: 100px;
+                border-bottom-right-radius: 100px;
+            }
+            .td-ps-rounded .td-social-expand-tabs {
+                border-radius: 100px;
+            }
+            .td-ps-bar .td-social-network .td-social-but-icon,
+            .td-ps-bar .td-social-network .td-social-but-text {
+                -webkit-box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, 0.31);
+                box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, 0.31);
+            }
+            .td-ps-bar .td-social-mail .td-social-but-icon,
+            .td-ps-bar .td-social-digg .td-social-but-icon,
+            .td-ps-bar .td-social-mail .td-social-but-text,
+            .td-ps-bar .td-social-digg .td-social-but-text {
+                -webkit-box-shadow: inset 0px -3px 0px 0px rgba(255, 255, 255, 0.28);
+                box-shadow: inset 0px -3px 0px 0px rgba(255, 255, 255, 0.28);
+            }
+            .td-ps-bar .td-social-print .td-social-but-icon,
+            .td-ps-bar .td-social-print .td-social-but-text {
+                -webkit-box-shadow: inset 0px -3px 0px 0px rgba(255, 255, 255, 0.2);
+                box-shadow: inset 0px -3px 0px 0px rgba(255, 255, 255, 0.2);
+            }
+            .td-ps-big .td-social-but-icon {
+                display: block;
+                line-height: 60px;
+            }
+            .td-ps-big .td-social-but-icon .td-icon-share {
+                width: auto;
+            }
+            .td-ps-big .td-social-handler .td-social-but-text:before {
+                display: none;
+            }
+            .td-ps-big .td-social-share-text .td-social-but-icon {
+                width: 90px;
+            }
+            .td-ps-big .td-social-expand-tabs .td-social-but-icon {
+                width: 60px;
+            }
+            @media (max-width: 767px) {
+                .td-ps-big .td-social-share-text {
+                    display: none;
+                }
+            }
+            .td-ps-big .td-social-facebook i,
+            .td-ps-big .td-social-reddit i,
+            .td-ps-big .td-social-mail i,
+            .td-ps-big .td-social-linkedin i,
+            .td-ps-big .td-social-tumblr i,
+            .td-ps-big .td-social-stumbleupon i {
+                margin-top: -2px;
+            }
+            .td-ps-big .td-social-facebook i,
+            .td-ps-big .td-social-reddit i,
+            .td-ps-big .td-social-linkedin i,
+            .td-ps-big .td-social-tumblr i,
+            .td-ps-big .td-social-stumbleupon i,
+            .td-ps-big .td-social-vk i,
+            .td-ps-big .td-social-viber i,
+            .td-ps-big .td-social-share-text i {
+                font-size: 22px;
+            }
+            .td-ps-big .td-social-telegram i {
+                font-size: 24px;
+            }
+            .td-ps-big .td-social-mail i,
+            .td-ps-big .td-social-line i,
+            .td-ps-big .td-social-print i {
+                font-size: 23px;
+            }
+            .td-ps-big .td-social-twitter i,
+            .td-ps-big .td-social-expand-tabs i {
+                font-size: 20px;
+            }
+            .td-ps-big .td-social-whatsapp i,
+            .td-ps-big .td-social-naver i {
+                font-size: 26px;
+            }
+            .td-ps-big .td-social-pinterest .td-icon-pinterest {
+                font-size: 21px;
+            }
+            .td-ps-big .td-social-telegram .td-icon-telegram {
+                left: 1px;
+            }
+            .td-ps-big .td-social-stumbleupon .td-icon-stumbleupon {
+                left: -2px;
+            }
+            .td-ps-big .td-social-digg .td-icon-digg {
+                left: -1px;
+                font-size: 25px;
+            }
+            .td-ps-big .td-social-vk .td-icon-vk {
+                left: -1px;
+            }
+            .td-ps-big .td-social-naver .td-icon-naver {
+                left: 0;
+            }
+            .td-ps-big .td-social-but-text {
+                margin-left: 0;
+                padding-top: 0;
+                padding-left: 17px;
+            }
+            .td-ps-big.td-ps-notext .td-social-network,
+            .td-ps-big.td-ps-notext .td-social-handler {
+                height: 60px;
+            }
+            .td-ps-big.td-ps-notext .td-social-network {
+                width: 60px;
+            }
+            .td-ps-big.td-ps-notext .td-social-network .td-social-but-icon {
+                width: 60px;
+            }
+            .td-ps-big.td-ps-notext .td-social-share-text .td-social-but-icon {
+                line-height: 40px;
+            }
+            .td-ps-big.td-ps-notext .td-social-share-text .td-social-but-text {
+                display: block;
+                line-height: 1;
+            }
+            .td-ps-big.td-ps-padding .td-social-network,
+            .td-ps-big.td-ps-padding .td-social-handler {
+                height: 90px;
+                font-size: 13px;
+            }
+            .td-ps-big.td-ps-padding .td-social-network {
+                min-width: 60px;
+            }
+            .td-ps-big.td-ps-padding .td-social-but-icon {
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 2px;
+            }
+            .td-ps-big.td-ps-padding.td-ps-bar .td-social-but-icon {
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+            .td-ps-big.td-ps-padding .td-social-but-text {
+                display: block;
+                padding-bottom: 17px;
+                line-height: 1;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 2px;
+            }
+            .td-ps-big.td-ps-padding .td-social-but-text:before {
+                display: none;
+            }
+            .td-ps-big.td-ps-padding .td-social-expand-tabs i {
+                line-height: 90px;
+            }
+            .td-ps-nogap {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .td-ps-nogap .td-social-network,
+            .td-ps-nogap .td-social-handler {
+                margin-left: 0;
+                margin-right: 0;
+                border-radius: 0;
+            }
+            .td-ps-nogap .td-social-network .td-social-but-icon,
+            .td-ps-nogap .td-social-network .td-social-but-text {
+                border-radius: 0;
+            }
+            .td-ps-nogap .td-social-expand-tabs {
+                border-radius: 0;
+            }
+            .td-post-sharing-style7 .td-social-network .td-social-but-icon {
+                height: 100%;
+            }
+            .td-post-sharing-style7 .td-social-network .td-social-but-icon:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.31);
+            }
+            .td-post-sharing-style7 .td-social-network .td-social-but-text {
+                padding-left: 17px;
+            }
+            .td-post-sharing-style7 .td-social-network .td-social-but-text:before {
+                display: none;
+            }
+            .td-post-sharing-style7 .td-social-mail .td-social-but-icon:before,
+            .td-post-sharing-style7 .td-social-digg .td-social-but-icon:before {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            .td-post-sharing-style7 .td-social-print .td-social-but-icon:before {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            @media (max-width: 767px) {
+                .td-post-sharing-style1 .td-social-share-text .td-social-but-text,
+                .td-post-sharing-style3 .td-social-share-text .td-social-but-text,
+                .td-post-sharing-style5 .td-social-share-text .td-social-but-text,
+                .td-post-sharing-style14 .td-social-share-text .td-social-but-text,
+                .td-post-sharing-style16 .td-social-share-text .td-social-but-text {
+                    display: none !important;
+                }
+            }
+            @media (max-width: 767px) {
+                .td-post-sharing-style2 .td-social-share-text,
+                .td-post-sharing-style4 .td-social-share-text,
+                .td-post-sharing-style6 .td-social-share-text,
+                .td-post-sharing-style7 .td-social-share-text,
+                .td-post-sharing-style15 .td-social-share-text,
+                .td-post-sharing-style17 .td-social-share-text,
+                .td-post-sharing-style18 .td-social-share-text,
+                .td-post-sharing-style19 .td-social-share-text,
+                .td-post-sharing-style20 .td-social-share-text {
+                    display: none !important;
+                }
+            }
+
+        </style>
+
+		<div class="td-post-sharing-visible"><a class="td-social-sharing-button td-social-sharing-button-js td-social-network td-social-facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fkalilinuxtutorials.com%2Fa-beginners-guide-to-siem%2F" title="Facebook" >
+                                        <div class="td-social-but-icon"><i class="td-icon-facebook"></i></div>
+                                        <div class="td-social-but-text">Facebook</div>
+                                    </a><a class="td-social-sharing-button td-social-sharing-button-js td-social-network td-social-twitter" href="https://twitter.com/intent/tweet?text=SIEM+%E2%80%93+Security+Information+and+Event+Management+Tools+%E2%80%93+A+Beginner%E2%80%99s+Guide&url=https%3A%2F%2Fkalilinuxtutorials.com%2Fa-beginners-guide-to-siem%2F&via=Kali+Linux+Tutorials" title="Twitter" >
+                                        <div class="td-social-but-icon"><i class="td-icon-twitter"></i></div>
+                                        <div class="td-social-but-text">Twitter</div>
+                                    </a><a class="td-social-sharing-button td-social-sharing-button-js td-social-network td-social-pinterest" href="https://pinterest.com/pin/create/button/?url=https://kalilinuxtutorials.com/a-beginners-guide-to-siem/&amp;media=https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp&description=SIEM, when expanded, becomes Security Information Event Management. As its name suggests, the main function of a SIEM is Event management." title="Pinterest" >
+                                        <div class="td-social-but-icon"><i class="td-icon-pinterest"></i></div>
+                                        <div class="td-social-but-text">Pinterest</div>
+                                    </a><a class="td-social-sharing-button td-social-sharing-button-js td-social-network td-social-whatsapp" href="https://api.whatsapp.com/send?text=SIEM+%E2%80%93+Security+Information+and+Event+Management+Tools+%E2%80%93+A+Beginner%E2%80%99s+Guide %0A%0A https://kalilinuxtutorials.com/a-beginners-guide-to-siem/" title="WhatsApp" >
+                                        <div class="td-social-but-icon"><i class="td-icon-whatsapp"></i></div>
+                                        <div class="td-social-but-text">WhatsApp</div>
+                                    </a></div><div class="td-social-sharing-hidden"><ul class="td-pulldown-filter-list"></ul><a class="td-social-sharing-button td-social-handler td-social-expand-tabs" href="#" data-block-uid="td_social_sharing_article_top" title="More">
+                                    <div class="td-social-but-icon"><i class="td-icon-plus td-social-expand-tabs-icon"></i></div>
+                                </a></div></div></div>                    </div>
+                </div>
+            </div> <!-- /.td-pb-row -->
+
+            <div class="td-pb-row">
+                                            <div class="td-pb-span8 td-main-content" role="main">
+                                <div class="td-ss-main-content">
+                                    
+
+
+
+        <div class="td-post-content tagdiv-type">
+            <div class="td-post-featured-image"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp" data-caption=""><img fifu-featured="1" width="696" height="363" class="entry-thumb td-modal-image" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp" alt="SIEM Guide" title="SIEM Guide" title="SIEM Guide"/></a></div>
+            
+<h2><strong>What is a SIEM?</strong></h2>
+
+
+
+<p>SIEM, when expanded, becomes Security Information Event Management. As its name suggests,  the primary function of a SIEM is Event management. </p>
+
+
+
+<p>The SIEM solution once implemented completely &amp; effectively will have complete visibility over an organization’s network.</p>
+
+
+
+<p>This helps administrators, SIEM operators to monitor network activity in their infrastructure. </p>
+
+
+
+<p>But interestingly, one can categorize various assets(network devices &amp; services) so that the monitoring ability of the SIEM can be tweaked to a large extent. </p>
+
+
+
+<p>The SIEM tool can generate alerts &amp; incidents based on specific co-relation rules. For eg: If a Port Scan is initiated against a system, the SIEM generates a <a href="https://kalilinuxtutorials.com/divideandscan-divide-full-port-scan-results-and-use-it-for-targeted-nmap-runs/" target="_blank" rel="noreferrer noopener">Port Scan</a> Alert with all details like Source &amp; Destination, port numbers, etc.</p>
+
+
+
+<p>This helps the organization to find incidents or hacking attempts in near-Real Time.</p>
+
+
+
+<h2><strong>How the SIEM works?</strong></h2>
+
+
+
+<p>You may have noticed the word “Co-Relation” in the previous paragraph. Yes, for the question of How the SIEM works, the one-stop answer is a co-relation. But not that alone of course. </p>
+
+
+
+<p>Basically, a SIEM tool collects logs from devices present in the Organization’s infrastructure. Some solutions also collect NetFlow and even raw packets.</p>
+
+
+
+<p>With the collected data(mainly logs, and packets), the tool provides insight into the happenings of the network. It provides data on each event occurring in the network and thus acts as a complete centralized security monitoring system.</p>
+
+
+
+<p>In addition to this, the SIEM tool can be configured to detect a specific incident. For example, a user is trying to log in to an AD server. For the first 3 times, the authentication failed and for the 4th time, it succeeded.</p>
+
+
+
+<p>Now, this is an incident to look upon. There are many possibilities.</p>
+
+
+
+<p>Maybe a person is trying to guess the password of another user and got it right, which is a breach. Or maybe if the user forgot his password but got it right at the end. This is where co-relation comes in.</p>
+
+
+
+<p>For such a case, a co-relation rule can be made in such a way that, If an authentication failure event is happening 3 times consecutively followed by success in a specific time period, then an alert pops up. </p>
+
+
+
+<p>This can be further investigated further by analyzing the logs from respective machines. So my definition of co-relation is: “ It is the rule which aggregates events into an incident which is defined by a specific application or scenario.”</p>
+
+
+
+<h2><strong>How logs reach the SIEM?</strong></h2>
+
+
+
+<p>Logs are fetched to the SIEM in two different ways. Agent-based &amp; Non-Agent based. In the agent-based approach, a log pushing agent is installed on the client machine from which the logs are collected. </p>
+
+
+
+<p>Then this agent is configured to forward logs into the solution. In the latter type, the client system sends logs on its own using a service like Syslog or <a href="https://kalilinuxtutorials.com/epagneul/" target="_blank" rel="noreferrer noopener">Windows Event</a> Collector service, etc. </p>
+
+
+
+<p>There are also specific applications &amp; devices which can be integrated through a series of vendor-specific procedures.</p>
+
+
+
+<figure class="wp-block-image"><a href="http://kalilinuxtutorials.com/wp-content/uploads/2016/03/SIEM.jpg"><img decoding="async" src="http://kalilinuxtutorials.com/wp-content/uploads/2016/03/SIEM_thumb.jpg" alt="SIEM"/></a></figure>
+
+
+
+<h2><strong>How exactly would the SIEM raise an alert?</strong></h2>
+
+
+
+<p>Well, now you know that the logs from different devices are being forwarded into the SIEM. Take an example: A port scan is initiated against a specific machine. In such a case, the machine would generate a lot of unusual logs.</p>
+
+
+
+<p>Analyzing the logs, it will be clear that a number of connection failures are occurring at different ports at regular intervals.</p>
+
+
+
+<p>Seeing packet information if possible, we can detect the SYN requests being sent from the same IP to the same IP but to different ports in regular intervals. That concludes that somebody initiated an SYN scan against our asset.</p>
+
+
+
+<p>The SIEM automates this process and raises alerts. Different solutions do this in different ways but produce the same results.</p>
+
+
+
+<h2><strong>The Business Impact of SIEM Solution</strong></h2>
+
+
+
+<p>This is one of the topics for which long-standing discussions were conducted &amp; still now a complete &amp; clear solution has not yet arrived.</p>
+
+
+
+<p>The question is “Why spend a huge amount of money on something which returns nothing ?” Well, what do you think about it?  Does SIEM solution give you something? Well yes! Nowadays SIEM solutions are evolving in a way, not only to protect an IT-Infrastructure but also to identify the business risks arising from the IT-Infrastructure.</p>
+
+
+
+<p>Even there is a separate strategy known as GRC, the IT-Governance Risk &amp; Compliance. </p>
+
+
+
+<p>This integrates &amp; relates technological aspects of IT security (like DOS attacks) using SIEM solutions with the business aspect(the asset being attacked &amp; approximate loss, reporting to the asset manager). </p>
+
+
+
+<p class="has-very-light-gray-background-color has-background">Such strategies bring different departments &amp; professionals(like SOC Operators/Managers, CISO, Financial Consultants, CXOs etc) under one dashboard. </p>
+
+
+
+<p class="has-very-light-gray-background-color has-background">This is done by integrating different solutions together. For eg: The Alerts &amp; incidents from SIEM is forwarded BPM(Business Process Management) solution by the CISO identifying &amp; co-relating the technical and business impacts.</p>
+
+
+
+<p class="has-very-light-gray-background-color has-background">Consider a simple scenario, lets’ take the same DDOs attack against an e-banking website(webserver).</p>
+
+
+
+<p>The solution first identifies the attack and the Operators/Analysts report it to their manager/CISOs. The managers &amp; CISOs dig for more technical info on the nature of the attack(specs like Source country, no of sessions, etc). </p>
+
+
+
+<p>Based on this they identify how much loss would be if the webserver would be down for a specific time(say 30mins).</p>
+
+
+
+<p>Now they report the technical details, suggestions, and steps to initiate to the firewall/IDS-IPS &amp; webserver teams. Then they report to the Senior Management &amp; Financial Managers about the loss they would have to suffer if action is not taken.</p>
+
+
+
+<p>If management is satisfied, they make a decision &amp; give approval to the Firewall/IDS-IPS &amp; webserver teams to take action.</p>
+
+
+
+<p>They would take action and the web server would have downtime for some 5 mins only. So the webserver resources are saved but ultimately money is also saved &amp; customer satisfaction is sustained.</p>
+
+
+
+<p>To learn more about DDoS attacks, check out 101domain&#8217;s helpful article on <a href="https://blog.101domain.com/domains/preventing-dns-attacks" target="_blank" rel="noreferrer noopener">Best Practices For Protecting Against DDoS Attacks</a>.</p>
+
+
+
+<p>So the point here is nowadays, SIEM solutions can adapt according to the way you want. This whole process described can be automated by integrating different solutions.</p>
+
+
+
+<p>The above scenario is only a simple case but the approach is the same in all situations. At the end of the day, money matters, but sadly nobody still recognizes the financial impact of IT-Security.</p>
+
+
+
+<figure class="wp-block-image"><a href="http://kalilinuxtutorials.com/wp-content/uploads/2016/03/SIEM2.jpg"><img decoding="async" src="http://kalilinuxtutorials.com/wp-content/uploads/2016/03/SIEM2_thumb.jpg" alt="SIEM"/></a></figure>
+
+
+
+<h2><strong>SIEM &amp; Compliance</strong></h2>
+
+
+
+<p>Apart from alerting and incident response, <a href="https://gbhackers.com/security-information-and-event-management-siem-a-detailed-explanation/" target="_blank" rel="noreferrer noopener">SIEM </a>helps an organization in Compliance &amp; Regulatory matters too. For all major compliance like ISO 27001, HIPAA, <a href="https://gbhackers.com/pci-compliance-checklist/" target="_blank" rel="noreferrer noopener">PCI</a>, log retention is an important criteria. </p>
+
+
+
+<p>For example, in ISO27001 there is a control for Logging &amp; Monitoring(A &#8211; 12.4), which suggests that all Event Logs, user activities, and security events should be logged and archived with a proper time-stamp</p>
+
+
+
+<p>The logs should also be protected from unauthorized access, tampering, etc. There is a list of controls to be in place in order to be properly compliant. Here SIEM can help. As said earlier, the siem tool collects logs from different devices and keeps them in its reserves.</p>
+
+
+
+<p>So it can act as a centralized log-collecting server. Plus, the tool keeps all the logs with proper time stamps and archives them in its bulk storage with no loss of integrity. So this helps with the controls in various standards.</p>
+
+
+
+<h2><strong>Conclusion</strong></h2>
+
+
+
+<p>To wrap up, there are a whole lot of benefits to implementing a SIEM solution in an Enterprise. But sadly many organizations consider the SIEM a waste of money.</p>
+
+
+
+<p>But, it is because they are not realizing the fact that SIEM can not only protect your network &amp; assets but also your business.</p>
+
+
+
+<p>Plus nowadays, you can integrate almost anything into the SIEM tool like servers, custom applications, network devices, end-user devices, smartphones, management &amp; collaboration solutions, etc.</p>
+
+
+
+<p>This gives the concerned personnel, a clear view of the insights of their own organization.</p>
+
+
+
+<p>They can have an overview of their system and keep on changing it for better results. Even some sites have malware analysis capabilities and vulnerability assessment functionalities which makes it a centralized security server providing multiple functions simultaneously.</p>
+
+
+
+<h2><strong>Also, Read</strong></h2>
+
+
+
+<p><a href="https://gbhackers.com/soc-indicator/" target="_blank" rel="noopener noreferrer">Indicator Of Attack(IoA’s) And Activities – SOC/SIEM – A Detailed Explanation</a></p>
+        </div>
+
+
+        <footer>
+                        
+            <div class="td-post-source-tags">
+                                <ul class="td-tags td-post-small-box clearfix"><li><span>TAGS</span></li><li><a href="https://kalilinuxtutorials.com/tag/corporate-security/">corporate security</a></li><li><a href="https://kalilinuxtutorials.com/tag/enterprise-security/">enterprise security</a></li><li><a href="https://kalilinuxtutorials.com/tag/log-management/">log management</a></li><li><a href="https://kalilinuxtutorials.com/tag/network-security/">network security</a></li><li><a href="https://kalilinuxtutorials.com/tag/security/">security</a></li><li><a href="https://kalilinuxtutorials.com/tag/security-analysis/">security analysis</a></li><li><a href="https://kalilinuxtutorials.com/tag/siem/">siem</a></li></ul>            </div>
+
+            <div class="td-post-sharing-bottom"><div class="td-post-sharing-classic"><iframe frameBorder="0" src="https://www.facebook.com/plugins/like.php?href=https://kalilinuxtutorials.com/a-beginners-guide-to-siem/&amp;layout=button_count&amp;show_faces=false&amp;width=105&amp;action=like&amp;colorscheme=light&amp;height=21" style="border:none; overflow:hidden; width:auto; height:21px; background-color:transparent;"></iframe></div><div id="td_social_sharing_article_bottom" class="td-post-sharing td-ps-bg td-ps-notext td-post-sharing-style1 "><div class="td-post-sharing-visible"><a class="td-social-sharing-button td-social-sharing-button-js td-social-network td-social-facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fkalilinuxtutorials.com%2Fa-beginners-guide-to-siem%2F" title="Facebook" >
+                                        <div class="td-social-but-icon"><i class="td-icon-facebook"></i></div>
+                                        <div class="td-social-but-text">Facebook</div>
+                                    </a><a class="td-social-sharing-button td-social-sharing-button-js td-social-network td-social-twitter" href="https://twitter.com/intent/tweet?text=SIEM+%E2%80%93+Security+Information+and+Event+Management+Tools+%E2%80%93+A+Beginner%E2%80%99s+Guide&url=https%3A%2F%2Fkalilinuxtutorials.com%2Fa-beginners-guide-to-siem%2F&via=Kali+Linux+Tutorials" title="Twitter" >
+                                        <div class="td-social-but-icon"><i class="td-icon-twitter"></i></div>
+                                        <div class="td-social-but-text">Twitter</div>
+                                    </a><a class="td-social-sharing-button td-social-sharing-button-js td-social-network td-social-pinterest" href="https://pinterest.com/pin/create/button/?url=https://kalilinuxtutorials.com/a-beginners-guide-to-siem/&amp;media=https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp&description=SIEM, when expanded, becomes Security Information Event Management. As its name suggests, the main function of a SIEM is Event management." title="Pinterest" >
+                                        <div class="td-social-but-icon"><i class="td-icon-pinterest"></i></div>
+                                        <div class="td-social-but-text">Pinterest</div>
+                                    </a><a class="td-social-sharing-button td-social-sharing-button-js td-social-network td-social-whatsapp" href="https://api.whatsapp.com/send?text=SIEM+%E2%80%93+Security+Information+and+Event+Management+Tools+%E2%80%93+A+Beginner%E2%80%99s+Guide %0A%0A https://kalilinuxtutorials.com/a-beginners-guide-to-siem/" title="WhatsApp" >
+                                        <div class="td-social-but-icon"><i class="td-icon-whatsapp"></i></div>
+                                        <div class="td-social-but-text">WhatsApp</div>
+                                    </a></div><div class="td-social-sharing-hidden"><ul class="td-pulldown-filter-list"></ul><a class="td-social-sharing-button td-social-handler td-social-expand-tabs" href="#" data-block-uid="td_social_sharing_article_bottom" title="More">
+                                    <div class="td-social-but-icon"><i class="td-icon-plus td-social-expand-tabs-icon"></i></div>
+                                </a></div></div></div>                        <div class="author-box-wrap"><a href="https://kalilinuxtutorials.com/author/ravisankar/" aria-label="author-photo"><img alt='' src='https://secure.gravatar.com/avatar/4000d2391ab7b0152dd85a01be057b5f?s=96&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/4000d2391ab7b0152dd85a01be057b5f?s=192&#038;d=mm&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' loading='lazy' decoding='async'/></a><div class="desc"><div class="td-author-name vcard author"><span class="fn"><a href="https://kalilinuxtutorials.com/author/ravisankar/">Ravi Sankar</a></span></div><div class="td-author-description"></div><div class="td-author-social"></div><div class="clearfix"></div></div></div>	        <span class="td-page-meta" itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="Ravi Sankar"></span><meta itemprop="datePublished" content="2022-12-15T07:33:00+00:00"><meta itemprop="dateModified" content="2022-12-15T08:36:06+00:00"><meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="https://kalilinuxtutorials.com/a-beginners-guide-to-siem/"/><span class="td-page-meta" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><span class="td-page-meta" itemprop="logo" itemscope itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://1.bp.blogspot.com/-bZ48PWBUikE/YSYJS0Xi0rI/AAAAAAAAOkU/3EsSKyVnKFAezIDTMEhClloiuikIUjgjQCLcBGAsYHQ/s16000/Kali%2BTutorials.png"></span><meta itemprop="name" content="Kali Linux Tutorials"></span><meta itemprop="headline " content="SIEM - Security Information and Event Management Tools - A Beginner&#039;s Guide"><span class="td-page-meta" itemprop="image" itemscope itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgo8XKui7StAgh-p1Jtz_D-oF1T3IzIvs_H7xBl1Sztg0ReFdynsIWPTxol2MOEJhI7L6rzxvLO8MGEmQ6GcyRONN4qjD3RMH56tyvrqoHJfp6af1Qbms1jYsfRjJlgAhTSSR6NfNVNvRla0Rodmsb0hRyvCY1xhFeaQbD0rveG98_XC32xmH7M0ZmwWQ/s16000/SIEM%20Beginner%20Guide.webp"><meta itemprop="width" content="728"><meta itemprop="height" content="380"></span>        </footer>
+
+    <div class="td_block_wrap td_block_related_posts tdi_4 td_with_ajax_pagination td-pb-border-top td_block_template_1"  data-td-block-uid="tdi_4" ><script>var block_tdi_4 = new tdBlock();
+block_tdi_4.id = "tdi_4";
+block_tdi_4.atts = '{"limit":3,"ajax_pagination":"next_prev","live_filter":"cur_post_same_categories","td_ajax_filter_type":"td_custom_related","class":"tdi_4","td_column_number":3,"block_type":"td_block_related_posts","live_filter_cur_post_id":810,"live_filter_cur_post_author":"2","block_template_id":"","header_color":"","ajax_pagination_infinite_stop":"","offset":"","td_ajax_preloading":"","td_filter_default_txt":"","td_ajax_filter_ids":"","el_class":"","color_preset":"","border_top":"","css":"","tdc_css":"","tdc_css_class":"tdi_4","tdc_css_class_style":"tdi_4_rand_style"}';
+block_tdi_4.td_column_number = "3";
+block_tdi_4.block_type = "td_block_related_posts";
+block_tdi_4.post_count = "3";
+block_tdi_4.found_posts = "32";
+block_tdi_4.header_color = "";
+block_tdi_4.ajax_pagination_infinite_stop = "";
+block_tdi_4.max_num_pages = "11";
+tdBlocksArray.push(block_tdi_4);
+</script><h4 class="td-related-title td-block-title"><a id="tdi_5" class="td-related-left td-cur-simple-item" data-td_filter_value="" data-td_block_id="tdi_4" href="#">RELATED ARTICLES</a><a id="tdi_6" class="td-related-right" data-td_filter_value="td_related_more_from_author" data-td_block_id="tdi_4" href="#">MORE FROM AUTHOR</a></h4><div id=tdi_4 class="td_block_inner">
+
+	<div class="td-related-row">
+
+	<div class="td-related-span4">
+
+        <div class="td_module_related_posts td-animation-stack td_mod_related_posts">
+            <div class="td-module-image">
+                <div class="td-module-thumb"><a href="https://kalilinuxtutorials.com/how-to-improve-the-cyber-security-of-a-law-firm/" rel="bookmark" class="td-image-wrap " title="How To Improve The Cyber Security Of A Law Firm" ><img class="entry-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAACWAQMAAACCSQSPAAAAA1BMVEWurq51dlI4AAAAAXRSTlMmkutdmwAAABpJREFUWMPtwQENAAAAwiD7p7bHBwwAAAAg7RD+AAGXD7BoAAAAAElFTkSuQmCC" alt="" title="How To Improve The Cyber Security Of A Law Firm" data-type="image_tag" data-img-url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUlePc2V8EsQ8tLLzx2OuBU-GdJ69dmFnrB7-nmzi7kizw5WQwW2L4ZayhRkxMEpNnf-DCSM3JRuUg9Ugq4_eByXiiDRBheCKd--cvSMsaJXea4Z5bXOp0OFvHO6YRxxYl4kwmx42AHtC1tkfe68jI5JG_P6a7ll0T87wwLaMXYJLETGSPbXfaS3XB3g/s16000/csfgsg.jpg"  width="218" height="122" /></a></div>                            </div>
+            <div class="item-details">
+                <h3 class="entry-title td-module-title"><a href="https://kalilinuxtutorials.com/how-to-improve-the-cyber-security-of-a-law-firm/" rel="bookmark" title="How To Improve The Cyber Security Of A Law Firm">How To Improve The Cyber Security Of A Law Firm</a></h3>            </div>
+        </div>
+        
+	</div> <!-- ./td-related-span4 -->
+
+	<div class="td-related-span4">
+
+        <div class="td_module_related_posts td-animation-stack td_mod_related_posts">
+            <div class="td-module-image">
+                <div class="td-module-thumb"><a href="https://kalilinuxtutorials.com/how-to-get-the-user-manuals-of-popular-xiaomi-products/" rel="bookmark" class="td-image-wrap " title="￼How To Get The User Manuals Of Popular Xiaomi Products" ><img class="entry-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAACWAQMAAACCSQSPAAAAA1BMVEWurq51dlI4AAAAAXRSTlMmkutdmwAAABpJREFUWMPtwQENAAAAwiD7p7bHBwwAAAAg7RD+AAGXD7BoAAAAAElFTkSuQmCC" alt="" title="￼How To Get The User Manuals Of Popular Xiaomi Products" data-type="image_tag" data-img-url="https://blogger.googleusercontent.com/img/a/AVvXsEgYWdCUfNtWKUPL6R8OySvseAo4-nbbrAPAIcBSGXX7n9JoRomLFUCvlrdI60pImxZK04gDe35zIxkXstTvMnZr5Ooo2G9MMrHWwOKwT84E60buGRhjUmF7vbSC7ZUrJwLi5tNcZfMsD9eSpBzkORpj-T5ft8vT_pECA5_ND4zVw0iAhyDlUkOb_OY-Cw=s16000"  width="218" height="122" /></a></div>                            </div>
+            <div class="item-details">
+                <h3 class="entry-title td-module-title"><a href="https://kalilinuxtutorials.com/how-to-get-the-user-manuals-of-popular-xiaomi-products/" rel="bookmark" title="￼How To Get The User Manuals Of Popular Xiaomi Products">￼How To Get The User Manuals Of Popular Xiaomi Products</a></h3>            </div>
+        </div>
+        
+	</div> <!-- ./td-related-span4 -->
+
+	<div class="td-related-span4">
+
+        <div class="td_module_related_posts td-animation-stack td_mod_related_posts">
+            <div class="td-module-image">
+                <div class="td-module-thumb"><a href="https://kalilinuxtutorials.com/infrastructure-as-code-iac-management-in-the-cloud/" rel="bookmark" class="td-image-wrap " title="Infrastructure-as-Code (IaC) Management in the Cloud￼" ><img class="entry-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAACWAQMAAACCSQSPAAAAA1BMVEWurq51dlI4AAAAAXRSTlMmkutdmwAAABpJREFUWMPtwQENAAAAwiD7p7bHBwwAAAAg7RD+AAGXD7BoAAAAAElFTkSuQmCC" alt="" title="Infrastructure-as-Code (IaC) Management in the Cloud￼" data-type="image_tag" data-img-url="https://blogger.googleusercontent.com/img/a/AVvXsEjuxS3HWOiVwKXre1uQFw-fGAehYXwl3PPjj_HtJhjPcpAHnnXiLYy7RFjoiLggDOnMZLHn1X2jl6h8Lfj97g1Zf5bRuckoqXfa7XlD01gFgFYxeq2R8-XkTT7at7fBbGPVbgc-Gmv8e4T3L_gbQ4OJVWHgccWGzCJNK0qNf48h0om9qMsZJPVlOoBU9w=s16000"  width="218" height="131" /></a></div>                            </div>
+            <div class="item-details">
+                <h3 class="entry-title td-module-title"><a href="https://kalilinuxtutorials.com/infrastructure-as-code-iac-management-in-the-cloud/" rel="bookmark" title="Infrastructure-as-Code (IaC) Management in the Cloud￼">Infrastructure-as-Code (IaC) Management in the Cloud￼</a></h3>            </div>
+        </div>
+        
+	</div> <!-- ./td-related-span4 --></div><!--./row-fluid--></div><div class="td-next-prev-wrap"><a href="#" class="td-ajax-prev-page ajax-page-disabled" aria-label="prev-page" id="prev-page-tdi_4" data-td_block_id="tdi_4"><i class="td-next-prev-icon td-icon-font td-icon-menu-left"></i></a><a href="#"  class="td-ajax-next-page" aria-label="next-page" id="next-page-tdi_4" data-td_block_id="tdi_4"><i class="td-next-prev-icon td-icon-font td-icon-menu-right"></i></a></div></div> <!-- ./block -->
+                                </div>
+                            </div>
+                            <div class="td-pb-span4 td-main-sidebar" role="complementary">
+                                <div class="td-ss-main-sidebar">
+                                    <div class="td-a-rec td-a-rec-id-custom_ad_1  tdi_7 td_block_template_1">
+<style>
+/* custom css */
+.tdi_7.td-a-rec{
+					text-align: center;
+				}.tdi_7 .td-element-style{
+					z-index: -1;
+				}.tdi_7.td-a-rec-img{
+				    text-align: left;
+				}.tdi_7.td-a-rec-img img{
+                    margin: 0 auto 0 0;
+                }@media (max-width: 767px) {
+				    .tdi_7.td-a-rec-img {
+				        text-align: center;
+				    }
+                }
+</style><div class="td-block-title-wrap"><h4 class="block-title td-block-title"><a href="https://bit.ly/2YWuPy2" class="td-pulldown-size">Complete Free Website Security Check</a></h4></div><a href="https://bit.ly/3v8iBi7">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtBEoD92ppwjnx_GLC-8h6yyQuIV63-c8LfXTLGZEajRkSqcR4QiWJDpk3p68d31q8DRaWMRKc5cSM_WLip38StjDIkYwr6BDNkzsr7a8_93iyTvqJM2yRGDWWiROwCgM1OoaLiVhu8Gwoz7DHbwaz7sGF74wg_Xb3Nl-dCTIw8XzujMbI-LRwh2p87A/s16000/Indusface%20banner%20600.png"></a></div><aside id="block-8" class="td_block_template_1 widget block-8 widget_block widget_text">
+<p> </p>
+</aside><div class="td_block_wrap td_block_7 td_block_widget tdi_8 td-pb-border-top td_block_template_1 td-column-1 td_block_padding"  data-td-block-uid="tdi_8" ><script>var block_tdi_8 = new tdBlock();
+block_tdi_8.id = "tdi_8";
+block_tdi_8.atts = '{"custom_title":"Recent Posts","custom_url":"","block_template_id":"","m6_tl":"","post_ids":"","category_id":"28","category_ids":"","tag_slug":"","autors_id":"","installed_post_types":"","sort":"","limit":"5","offset":"","time_ago_add_txt":"ago","el_class":"","td_ajax_filter_type":"","td_ajax_filter_ids":"","td_filter_default_txt":"All","td_ajax_preloading":"","ajax_pagination":"","ajax_pagination_infinite_stop":"","header_color":"#","header_text_color":"#","accent_text_color":"#","class":"td_block_widget tdi_8","block_type":"td_block_7","separator":"","show_modified_date":"","time_ago":"","f_header_font_header":"","f_header_font_title":"Block header","f_header_font_settings":"","f_header_font_family":"","f_header_font_size":"","f_header_font_line_height":"","f_header_font_style":"","f_header_font_weight":"","f_header_font_transform":"","f_header_font_spacing":"","f_header_":"","f_ajax_font_title":"Ajax categories","f_ajax_font_settings":"","f_ajax_font_family":"","f_ajax_font_size":"","f_ajax_font_line_height":"","f_ajax_font_style":"","f_ajax_font_weight":"","f_ajax_font_transform":"","f_ajax_font_spacing":"","f_ajax_":"","f_more_font_title":"Load more button","f_more_font_settings":"","f_more_font_family":"","f_more_font_size":"","f_more_font_line_height":"","f_more_font_style":"","f_more_font_weight":"","f_more_font_transform":"","f_more_font_spacing":"","f_more_":"","m6f_title_font_header":"","m6f_title_font_title":"Article title","m6f_title_font_settings":"","m6f_title_font_family":"","m6f_title_font_size":"","m6f_title_font_line_height":"","m6f_title_font_style":"","m6f_title_font_weight":"","m6f_title_font_transform":"","m6f_title_font_spacing":"","m6f_title_":"","m6f_cat_font_title":"Article category tag","m6f_cat_font_settings":"","m6f_cat_font_family":"","m6f_cat_font_size":"","m6f_cat_font_line_height":"","m6f_cat_font_style":"","m6f_cat_font_weight":"","m6f_cat_font_transform":"","m6f_cat_font_spacing":"","m6f_cat_":"","m6f_meta_font_title":"Article meta info","m6f_meta_font_settings":"","m6f_meta_font_family":"","m6f_meta_font_size":"","m6f_meta_font_line_height":"","m6f_meta_font_style":"","m6f_meta_font_weight":"","m6f_meta_font_transform":"","m6f_meta_font_spacing":"","m6f_meta_":"","css":"","tdc_css":"","td_column_number":1,"color_preset":"","border_top":"","tdc_css_class":"tdi_8","tdc_css_class_style":"tdi_8_rand_style"}';
+block_tdi_8.td_column_number = "1";
+block_tdi_8.block_type = "td_block_7";
+block_tdi_8.post_count = "5";
+block_tdi_8.found_posts = "2766";
+block_tdi_8.header_color = "#";
+block_tdi_8.ajax_pagination_infinite_stop = "";
+block_tdi_8.max_num_pages = "554";
+tdBlocksArray.push(block_tdi_8);
+</script><div class="td-block-title-wrap"><h4 class="block-title td-block-title"><span class="td-pulldown-size">Recent Posts</span></h4></div><div id=tdi_8 class="td_block_inner">
+
+	<div class="td-block-span12">
+
+        <div class="td_module_6 td_module_wrap td-animation-stack">
+
+        <div class="td-module-thumb"><a href="https://kalilinuxtutorials.com/farsightad/" rel="bookmark" class="td-image-wrap " title="FarsightAD : PowerShell Script That Aim To Help Uncovering (Eventual) Persistence Mechanisms" ><img class="entry-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABGAQMAAAAASKMqAAAAA1BMVEWurq51dlI4AAAAAXRSTlMmkutdmwAAABBJREFUKM9jGAWjYBQMKwAAA9QAAQWBn6cAAAAASUVORK5CYII=" alt="" title="FarsightAD : PowerShell Script That Aim To Help Uncovering (Eventual) Persistence Mechanisms" data-type="image_tag" data-img-url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJ4bLoM6UbnACZ0C1D7f6hJadru7CcQTt-SUql5TOjXggPhIDzjngHBNG0TK-qmAOJdIcq_MHq_m1aO1rTib8SnfKX_ZZKbrw3QZHBPEtKVvltV7eaKpd_U9FHAMeqOoVVxeVx_cpEmBpO9T7xI-XmN7IGGckxFPmFWpoCo9QRfIsDaEQFrpGnd18m/s728/FarsightAD4.png"  width="100" height="52" /></a></div>
+        <div class="item-details">
+            <h3 class="entry-title td-module-title"><a href="https://kalilinuxtutorials.com/farsightad/" rel="bookmark" title="FarsightAD : PowerShell Script That Aim To Help Uncovering (Eventual) Persistence Mechanisms">FarsightAD : PowerShell Script That Aim To Help Uncovering (Eventual) Persistence...</a></h3>            <div class="td-module-meta-info">
+                                                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2023-01-10T14:46:18+00:00" >January 10, 2023</time></span>                            </div>
+        </div>
+
+        </div>
+
+        
+	</div> <!-- ./td-block-span12 -->
+
+	<div class="td-block-span12">
+
+        <div class="td_module_6 td_module_wrap td-animation-stack">
+
+        <div class="td-module-thumb"><a href="https://kalilinuxtutorials.com/havoc/" rel="bookmark" class="td-image-wrap " title="Havoc : Modern and malleable post-exploitation command and control framework" ><img class="entry-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABGAQMAAAAASKMqAAAAA1BMVEWurq51dlI4AAAAAXRSTlMmkutdmwAAABBJREFUKM9jGAWjYBQMKwAAA9QAAQWBn6cAAAAASUVORK5CYII=" alt="" title="Havoc : Modern and malleable post-exploitation command and control framework" data-type="image_tag" data-img-url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbeJAXFLNhrE3nWJCL3MLMJcnlAdd95hpF1kvehYLKd5n8lJFEAIu6elNmCVLGpotnWYtArot1wDZACxnoPiDpe68BFi5-4ABdhPz0XhoVm5qohQbcxH_aPI4r_gBh5n6l4ewbTs-aX81HJt93wXTB7uqJFLrxT7AeSRPBSTkeFjzrLB1LTCSQx6fD/s728/Havoc(1).png"  width="100" height="52" /></a></div>
+        <div class="item-details">
+            <h3 class="entry-title td-module-title"><a href="https://kalilinuxtutorials.com/havoc/" rel="bookmark" title="Havoc : Modern and malleable post-exploitation command and control framework">Havoc : Modern and malleable post-exploitation command and control framework</a></h3>            <div class="td-module-meta-info">
+                                                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2023-01-05T10:00:51+00:00" >January 5, 2023</time></span>                            </div>
+        </div>
+
+        </div>
+
+        
+	</div> <!-- ./td-block-span12 -->
+
+	<div class="td-block-span12">
+
+        <div class="td_module_6 td_module_wrap td-animation-stack">
+
+        <div class="td-module-thumb"><a href="https://kalilinuxtutorials.com/ofrak/" rel="bookmark" class="td-image-wrap " title="OFRAK : Unpack, Modify, And Repack Binaries" ><img class="entry-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABGAQMAAAAASKMqAAAAA1BMVEWurq51dlI4AAAAAXRSTlMmkutdmwAAABBJREFUKM9jGAWjYBQMKwAAA9QAAQWBn6cAAAAASUVORK5CYII=" alt="" title="OFRAK : Unpack, Modify, And Repack Binaries" data-type="image_tag" data-img-url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvxdnksYXDUygY9qNNyv5mXr8uhkebMNAPIeqz4CR9SttQFSuxehb8nPn-uwtTt9Cj2lp-L3Zh8zoPDCBEm5c7yqtxOp-OCA-coz4XjTOgpr-VSkKm4iKE0fi6b2tK17YxP3ACOhStTCIltJIrqN8QeOLMCTwk_DXsInx4F1biPSCyNbMC7Hi2ihUx/s728/OFRAK(1).png"  width="100" height="52" /></a></div>
+        <div class="item-details">
+            <h3 class="entry-title td-module-title"><a href="https://kalilinuxtutorials.com/ofrak/" rel="bookmark" title="OFRAK : Unpack, Modify, And Repack Binaries">OFRAK : Unpack, Modify, And Repack Binaries</a></h3>            <div class="td-module-meta-info">
+                                                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2023-01-04T12:47:57+00:00" >January 4, 2023</time></span>                            </div>
+        </div>
+
+        </div>
+
+        
+	</div> <!-- ./td-block-span12 -->
+
+	<div class="td-block-span12">
+
+        <div class="td_module_6 td_module_wrap td-animation-stack">
+
+        <div class="td-module-thumb"><a href="https://kalilinuxtutorials.com/autobloody/" rel="bookmark" class="td-image-wrap " title="Autobloody : Tool To Automatically Exploit Active Directory Privilege Escalation Paths Shown By BloodHound" ><img class="entry-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABGAQMAAAAASKMqAAAAA1BMVEWurq51dlI4AAAAAXRSTlMmkutdmwAAABBJREFUKM9jGAWjYBQMKwAAA9QAAQWBn6cAAAAASUVORK5CYII=" alt="" title="Autobloody : Tool To Automatically Exploit Active Directory Privilege Escalation Paths Shown By BloodHound" data-type="image_tag" data-img-url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7cWl56r2h8DBy_HcxWxzaTu1aElg-Vs3aDsV4nRODxfyId17snJbflkl55-vGRyJ9obbT4WHIdglszrNUHgBtSfYSYEgrqezqJ_oIxYIdLMXa6tv4jrsM7eOGWSxTeqrrQo9cY9dnsT7R-9wi-fmL1NM76elorCuYfYS06etmWth81r4AgK7rkPBq/s728/autobloody(1).png"  width="100" height="52" /></a></div>
+        <div class="item-details">
+            <h3 class="entry-title td-module-title"><a href="https://kalilinuxtutorials.com/autobloody/" rel="bookmark" title="Autobloody : Tool To Automatically Exploit Active Directory Privilege Escalation Paths Shown By BloodHound">Autobloody : Tool To Automatically Exploit Active Directory Privilege Escalation Paths...</a></h3>            <div class="td-module-meta-info">
+                                                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2023-01-03T12:09:31+00:00" >January 3, 2023</time></span>                            </div>
+        </div>
+
+        </div>
+
+        
+	</div> <!-- ./td-block-span12 -->
+
+	<div class="td-block-span12">
+
+        <div class="td_module_6 td_module_wrap td-animation-stack">
+
+        <div class="td-module-thumb"><a href="https://kalilinuxtutorials.com/s3crets-scanner/" rel="bookmark" class="td-image-wrap " title="S3Crets Scanner : Hunting For Secrets Uploaded To Public S3 Buckets" ><img class="entry-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABGAQMAAAAASKMqAAAAA1BMVEWurq51dlI4AAAAAXRSTlMmkutdmwAAABBJREFUKM9jGAWjYBQMKwAAA9QAAQWBn6cAAAAASUVORK5CYII=" alt="" title="S3Crets Scanner : Hunting For Secrets Uploaded To Public S3 Buckets" data-type="image_tag" data-img-url="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAzrBXe8ApdzbYCkQwcgIILnnSRCGSKqE6ym-sDP35VZuO4LrUz8ZYLOJTnxDNyvvgwo_2E4jyWmAKjzETEWTagoINk30JvUIhb1U-P_FqDgonsxlr6uBUz7CSizFGwrm8-pRYoQD7aNYWH2n97-KDzQN3hgAU2h6w53jJj75Xchzalm0z2xu59L8A/s728/S3cret%20Scanner(1).png"  width="100" height="52" /></a></div>
+        <div class="item-details">
+            <h3 class="entry-title td-module-title"><a href="https://kalilinuxtutorials.com/s3crets-scanner/" rel="bookmark" title="S3Crets Scanner : Hunting For Secrets Uploaded To Public S3 Buckets">S3Crets Scanner : Hunting For Secrets Uploaded To Public S3 Buckets</a></h3>            <div class="td-module-meta-info">
+                                                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2022-12-28T16:01:21+00:00" >December 28, 2022</time></span>                            </div>
+        </div>
+
+        </div>
+
+        
+	</div> <!-- ./td-block-span12 --></div></div> <!-- ./block -->                                </div>
+                            </div>
+                                    </div> <!-- /.td-pb-row -->
+        </article> <!-- /.post -->
+    </div> <!-- /.td-container -->
+</div> <!-- /.td-main-content-wrap -->
+
+<!-- Instagram -->
+
+	
+	
+            <div class="tdc-footer-wrap ">
+
+                <!-- Footer -->
+				<div class="td-footer-wrapper td-footer-container td-container-wrap td-footer-template-14 ">
+    <div class="td-container td-footer-bottom-full">
+        <div class="td-pb-row">
+            <div class="td-pb-span3"><aside class="footer-logo-wrap"><a href="https://kalilinuxtutorials.com/"><img class="td-retina-data" src="https://1.bp.blogspot.com/-bZ48PWBUikE/YSYJS0Xi0rI/AAAAAAAAOkU/3EsSKyVnKFAezIDTMEhClloiuikIUjgjQCLcBGAsYHQ/s16000/Kali%2BTutorials.png" data-retina="https://1.bp.blogspot.com/-bZ48PWBUikE/YSYJS0Xi0rI/AAAAAAAAOkU/3EsSKyVnKFAezIDTMEhClloiuikIUjgjQCLcBGAsYHQ/s16000/Kali%2BTutorials.png" alt="" title=""   /></a></aside></div><div class="td-pb-span5"><aside class="footer-text-wrap"><div class="block-title"><span>ABOUT US</span></div>Kali Linux Tutorials offer a number of hacking Tutorials and we introduce a number of Penetration Testing tools. Kalilinuxtutorials are a medium to index Penetration Testing Tool.</aside></div><div class="td-pb-span4"><aside class="footer-social-wrap td-social-style-2"><div class="block-title"><span>FOLLOW US</span></div>
+        <span class="td-social-icon-wrap">
+            <a target="_blank" rel="nofollow" href="https://www.facebook.com/kalicompletetutorials" title="Facebook">
+                <i class="td-icon-font td-icon-facebook"></i>
+            </a>
+        </span></aside></div>        </div>
+    </div>
+</div>
+                <!-- Sub Footer -->
+				    <div class="td-sub-footer-container td-container-wrap ">
+        <div class="td-container">
+            <div class="td-pb-row">
+                <div class="td-pb-span td-sub-footer-menu">
+                                    </div>
+
+                <div class="td-pb-span td-sub-footer-copy">
+                    &copy;  Copyright 2022 - Kali Linux Tutorials                </div>
+            </div>
+        </div>
+    </div>
+            </div><!--close td-footer-wrap-->
+			
+</div><!--close td-outer-wrap-->
+
+
+
+
+    <!--
+
+        Theme: Newspaper by tagDiv.com 2021
+        Version: 11.2 (rara)
+        Deploy mode: deploy
+        
+        uid: 63be70af74db9
+    -->
+
+    
+<!-- Custom css from theme panel -->
+<style type="text/css" media="screen">
+/* custom css theme panel */
+.tdc-font-tdmp {
+    font-family: td-multipurpose;
+}
+</style>
+
+<script type='text/javascript' src='https://kalilinuxtutorials.com/wp-content/plugins/td-composer/legacy/Newspaper/js/tagdiv_theme.min.js?ver=11.2' id='td-site-min-js'></script>
+<script type='text/javascript' src='https://kalilinuxtutorials.com/wp-includes/js/comment-reply.min.js?ver=6.1.1' id='comment-reply-js'></script>
+<script type='text/javascript' id='fifu-image-js-js-extra'>
+/* <![CDATA[ */
+var fifuImageVars = {"fifu_lazy":"","fifu_woo_lbox_enabled":"1","fifu_woo_zoom":"inline","fifu_is_product":"","fifu_is_flatsome_active":"","fifu_rest_url":"https:\/\/kalilinuxtutorials.com\/wp-json\/","fifu_nonce":"d59bf105c5"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://kalilinuxtutorials.com/wp-content/plugins/featured-image-from-url/includes/html/js/image.js?ver=3.7.0' id='fifu-image-js-js'></script>
+
+<!-- JS generated by theme -->
+
+<script>
+    
+</script>
+
+<script src='https://stats.wp.com/e-202302.js' defer></script>
+<script>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:10.0',blog:'90807269',post:'810',tz:'0',srv:'kalilinuxtutorials.com'} ]);
+	_stq.push([ 'clickTrackerInit', '90807269', '810' ]);
+</script>
+
+</body>
+</html>
+<!-- Page generated by LiteSpeed Cache 4.3 on 2023-01-11 08:17:51 -->

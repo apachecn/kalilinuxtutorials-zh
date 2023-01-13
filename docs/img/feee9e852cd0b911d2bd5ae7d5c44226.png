@@ -1,0 +1,412 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1087.899999957" height="744.8" font-family="Consolas, Menlo, 'Bitstream Vera Sans Mono', monospace, 'Powerline Symbols'" font-size="14px">
+<style>
+<!-- solarized-dark theme -->
+
+.default-text-fill {fill: #839496}
+.default-bg-fill {fill: #002b36}
+
+.c-0 {fill: #073642}
+.c-1 {fill: #dc322f}
+.c-2 {fill: #859900}
+.c-3 {fill: #b58900}
+.c-4 {fill: #268bd2}
+.c-5 {fill: #d33682}
+.c-6 {fill: #2aa198}
+.c-7 {fill: #eee8d5}
+.c-8 {fill: #002b36}
+.c-9 {fill: #cb4b16}
+.c-10 {fill: #586e75}
+.c-11 {fill: #657b83}
+.c-12 {fill: #839496}
+.c-13 {fill: #6c71c4}
+.c-14 {fill: #93a1a1}
+.c-15 {fill: #fdf6e3}
+.c-8, .c-9, .c-10, .c-11, .c-12, .c-13, .c-14, .c-15 {font-weight: bold}
+
+<!-- 256 colors -->
+
+.c-16 {fill: #000000}
+.c-17 {fill: #00005f}
+.c-18 {fill: #000087}
+.c-19 {fill: #0000af}
+.c-20 {fill: #0000d7}
+.c-21 {fill: #0000ff}
+.c-22 {fill: #005f00}
+.c-23 {fill: #005f5f}
+.c-24 {fill: #005f87}
+.c-25 {fill: #005faf}
+.c-26 {fill: #005fd7}
+.c-27 {fill: #005fff}
+.c-28 {fill: #008700}
+.c-29 {fill: #00875f}
+.c-30 {fill: #008787}
+.c-31 {fill: #0087af}
+.c-32 {fill: #0087d7}
+.c-33 {fill: #0087ff}
+.c-34 {fill: #00af00}
+.c-35 {fill: #00af5f}
+.c-36 {fill: #00af87}
+.c-37 {fill: #00afaf}
+.c-38 {fill: #00afd7}
+.c-39 {fill: #00afff}
+.c-40 {fill: #00d700}
+.c-41 {fill: #00d75f}
+.c-42 {fill: #00d787}
+.c-43 {fill: #00d7af}
+.c-44 {fill: #00d7d7}
+.c-45 {fill: #00d7ff}
+.c-46 {fill: #00ff00}
+.c-47 {fill: #00ff5f}
+.c-48 {fill: #00ff87}
+.c-49 {fill: #00ffaf}
+.c-50 {fill: #00ffd7}
+.c-51 {fill: #00ffff}
+.c-52 {fill: #5f0000}
+.c-53 {fill: #5f005f}
+.c-54 {fill: #5f0087}
+.c-55 {fill: #5f00af}
+.c-56 {fill: #5f00d7}
+.c-57 {fill: #5f00ff}
+.c-58 {fill: #5f5f00}
+.c-59 {fill: #5f5f5f}
+.c-60 {fill: #5f5f87}
+.c-61 {fill: #5f5faf}
+.c-62 {fill: #5f5fd7}
+.c-63 {fill: #5f5fff}
+.c-64 {fill: #5f8700}
+.c-65 {fill: #5f875f}
+.c-66 {fill: #5f8787}
+.c-67 {fill: #5f87af}
+.c-68 {fill: #5f87d7}
+.c-69 {fill: #5f87ff}
+.c-70 {fill: #5faf00}
+.c-71 {fill: #5faf5f}
+.c-72 {fill: #5faf87}
+.c-73 {fill: #5fafaf}
+.c-74 {fill: #5fafd7}
+.c-75 {fill: #5fafff}
+.c-76 {fill: #5fd700}
+.c-77 {fill: #5fd75f}
+.c-78 {fill: #5fd787}
+.c-79 {fill: #5fd7af}
+.c-80 {fill: #5fd7d7}
+.c-81 {fill: #5fd7ff}
+.c-82 {fill: #5fff00}
+.c-83 {fill: #5fff5f}
+.c-84 {fill: #5fff87}
+.c-85 {fill: #5fffaf}
+.c-86 {fill: #5fffd7}
+.c-87 {fill: #5fffff}
+.c-88 {fill: #870000}
+.c-89 {fill: #87005f}
+.c-90 {fill: #870087}
+.c-91 {fill: #8700af}
+.c-92 {fill: #8700d7}
+.c-93 {fill: #8700ff}
+.c-94 {fill: #875f00}
+.c-95 {fill: #875f5f}
+.c-96 {fill: #875f87}
+.c-97 {fill: #875faf}
+.c-98 {fill: #875fd7}
+.c-99 {fill: #875fff}
+.c-100 {fill: #878700}
+.c-101 {fill: #87875f}
+.c-102 {fill: #878787}
+.c-103 {fill: #8787af}
+.c-104 {fill: #8787d7}
+.c-105 {fill: #8787ff}
+.c-106 {fill: #87af00}
+.c-107 {fill: #87af5f}
+.c-108 {fill: #87af87}
+.c-109 {fill: #87afaf}
+.c-110 {fill: #87afd7}
+.c-111 {fill: #87afff}
+.c-112 {fill: #87d700}
+.c-113 {fill: #87d75f}
+.c-114 {fill: #87d787}
+.c-115 {fill: #87d7af}
+.c-116 {fill: #87d7d7}
+.c-117 {fill: #87d7ff}
+.c-118 {fill: #87ff00}
+.c-119 {fill: #87ff5f}
+.c-120 {fill: #87ff87}
+.c-121 {fill: #87ffaf}
+.c-122 {fill: #87ffd7}
+.c-123 {fill: #87ffff}
+.c-124 {fill: #af0000}
+.c-125 {fill: #af005f}
+.c-126 {fill: #af0087}
+.c-127 {fill: #af00af}
+.c-128 {fill: #af00d7}
+.c-129 {fill: #af00ff}
+.c-130 {fill: #af5f00}
+.c-131 {fill: #af5f5f}
+.c-132 {fill: #af5f87}
+.c-133 {fill: #af5faf}
+.c-134 {fill: #af5fd7}
+.c-135 {fill: #af5fff}
+.c-136 {fill: #af8700}
+.c-137 {fill: #af875f}
+.c-138 {fill: #af8787}
+.c-139 {fill: #af87af}
+.c-140 {fill: #af87d7}
+.c-141 {fill: #af87ff}
+.c-142 {fill: #afaf00}
+.c-143 {fill: #afaf5f}
+.c-144 {fill: #afaf87}
+.c-145 {fill: #afafaf}
+.c-146 {fill: #afafd7}
+.c-147 {fill: #afafff}
+.c-148 {fill: #afd700}
+.c-149 {fill: #afd75f}
+.c-150 {fill: #afd787}
+.c-151 {fill: #afd7af}
+.c-152 {fill: #afd7d7}
+.c-153 {fill: #afd7ff}
+.c-154 {fill: #afff00}
+.c-155 {fill: #afff5f}
+.c-156 {fill: #afff87}
+.c-157 {fill: #afffaf}
+.c-158 {fill: #afffd7}
+.c-159 {fill: #afffff}
+.c-160 {fill: #d70000}
+.c-161 {fill: #d7005f}
+.c-162 {fill: #d70087}
+.c-163 {fill: #d700af}
+.c-164 {fill: #d700d7}
+.c-165 {fill: #d700ff}
+.c-166 {fill: #d75f00}
+.c-167 {fill: #d75f5f}
+.c-168 {fill: #d75f87}
+.c-169 {fill: #d75faf}
+.c-170 {fill: #d75fd7}
+.c-171 {fill: #d75fff}
+.c-172 {fill: #d78700}
+.c-173 {fill: #d7875f}
+.c-174 {fill: #d78787}
+.c-175 {fill: #d787af}
+.c-176 {fill: #d787d7}
+.c-177 {fill: #d787ff}
+.c-178 {fill: #d7af00}
+.c-179 {fill: #d7af5f}
+.c-180 {fill: #d7af87}
+.c-181 {fill: #d7afaf}
+.c-182 {fill: #d7afd7}
+.c-183 {fill: #d7afff}
+.c-184 {fill: #d7d700}
+.c-185 {fill: #d7d75f}
+.c-186 {fill: #d7d787}
+.c-187 {fill: #d7d7af}
+.c-188 {fill: #d7d7d7}
+.c-189 {fill: #d7d7ff}
+.c-190 {fill: #d7ff00}
+.c-191 {fill: #d7ff5f}
+.c-192 {fill: #d7ff87}
+.c-193 {fill: #d7ffaf}
+.c-194 {fill: #d7ffd7}
+.c-195 {fill: #d7ffff}
+.c-196 {fill: #ff0000}
+.c-197 {fill: #ff005f}
+.c-198 {fill: #ff0087}
+.c-199 {fill: #ff00af}
+.c-200 {fill: #ff00d7}
+.c-201 {fill: #ff00ff}
+.c-202 {fill: #ff5f00}
+.c-203 {fill: #ff5f5f}
+.c-204 {fill: #ff5f87}
+.c-205 {fill: #ff5faf}
+.c-206 {fill: #ff5fd7}
+.c-207 {fill: #ff5fff}
+.c-208 {fill: #ff8700}
+.c-209 {fill: #ff875f}
+.c-210 {fill: #ff8787}
+.c-211 {fill: #ff87af}
+.c-212 {fill: #ff87d7}
+.c-213 {fill: #ff87ff}
+.c-214 {fill: #ffaf00}
+.c-215 {fill: #ffaf5f}
+.c-216 {fill: #ffaf87}
+.c-217 {fill: #ffafaf}
+.c-218 {fill: #ffafd7}
+.c-219 {fill: #ffafff}
+.c-220 {fill: #ffd700}
+.c-221 {fill: #ffd75f}
+.c-222 {fill: #ffd787}
+.c-223 {fill: #ffd7af}
+.c-224 {fill: #ffd7d7}
+.c-225 {fill: #ffd7ff}
+.c-226 {fill: #ffff00}
+.c-227 {fill: #ffff5f}
+.c-228 {fill: #ffff87}
+.c-229 {fill: #ffffaf}
+.c-230 {fill: #ffffd7}
+.c-231 {fill: #ffffff}
+.c-232 {fill: #080808}
+.c-233 {fill: #121212}
+.c-234 {fill: #1c1c1c}
+.c-235 {fill: #262626}
+.c-236 {fill: #303030}
+.c-237 {fill: #3a3a3a}
+.c-238 {fill: #444444}
+.c-239 {fill: #4e4e4e}
+.c-240 {fill: #585858}
+.c-241 {fill: #626262}
+.c-242 {fill: #6c6c6c}
+.c-243 {fill: #767676}
+.c-244 {fill: #808080}
+.c-245 {fill: #8a8a8a}
+.c-246 {fill: #949494}
+.c-247 {fill: #9e9e9e}
+.c-248 {fill: #a8a8a8}
+.c-249 {fill: #b2b2b2}
+.c-250 {fill: #bcbcbc}
+.c-251 {fill: #c6c6c6}
+.c-252 {fill: #d0d0d0}
+.c-253 {fill: #dadada}
+.c-254 {fill: #e4e4e4}
+.c-255 {fill: #eeeeee}
+
+.br { font-weight: bold }
+.it { font-style: italic }
+.un { text-decoration: underline }
+</style>
+
+<rect width="100%" height="100%" class="default-bg-fill" rx="4" ry="4" />
+
+<svg x="0.775%" y="1.316%" class="default-text-fill">
+<g style="shape-rendering: optimizeSpeed">
+</g>
+
+<text class="default-text-fill">
+<tspan y="0.000%">
+
+</tspan>
+<tspan y="2.632%">
+<tspan dy="1em" x="0.000%" class="c-4">~</tspan>
+</tspan>
+<tspan y="5.263%">
+<tspan dy="1em" x="0.000%">▶</tspan><tspan x="1.550%">#</tspan><tspan x="3.101%">S</tspan><tspan x="3.876%">t</tspan><tspan x="4.651%">a</tspan><tspan x="5.426%">r</tspan><tspan x="6.202%">t</tspan><tspan x="7.752%">b</tspan><tspan x="8.527%">y</tspan><tspan x="10.078%">f</tspan><tspan x="10.853%">i</tspan><tspan x="11.628%">g</tspan><tspan x="12.403%">u</tspan><tspan x="13.178%">r</tspan><tspan x="13.953%">i</tspan><tspan x="14.729%">n</tspan><tspan x="15.504%">g</tspan><tspan x="17.054%">o</tspan><tspan x="17.829%">u</tspan><tspan x="18.605%">t</tspan><tspan x="20.155%">t</tspan><tspan x="20.930%">h</tspan><tspan x="21.705%">e</tspan><tspan x="23.256%">r</tspan><tspan x="24.031%">e</tspan><tspan x="24.806%">s</tspan><tspan x="25.581%">p</tspan><tspan x="26.357%">o</tspan><tspan x="27.132%">n</tspan><tspan x="27.907%">s</tspan><tspan x="28.682%">e</tspan><tspan x="30.233%">l</tspan><tspan x="31.008%">e</tspan><tspan x="31.783%">n</tspan><tspan x="32.558%">g</tspan><tspan x="33.333%">t</tspan><tspan x="34.109%">h</tspan><tspan x="35.659%">o</tspan><tspan x="36.434%">f</tspan><tspan x="37.984%">f</tspan><tspan x="38.760%">a</tspan><tspan x="39.535%">l</tspan><tspan x="40.310%">s</tspan><tspan x="41.085%">e</tspan><tspan x="42.636%">p</tspan><tspan x="43.411%">o</tspan><tspan x="44.186%">s</tspan><tspan x="44.961%">i</tspan><tspan x="45.736%">t</tspan><tspan x="46.512%">i</tspan><tspan x="47.287%">v</tspan><tspan x="48.062%">e</tspan>
+</tspan>
+<tspan y="7.895%">
+
+</tspan>
+<tspan y="10.526%">
+
+</tspan>
+<tspan y="13.158%">
+<tspan dy="1em" x="0.000%" class="c-4">~</tspan>
+</tspan>
+<tspan y="15.789%">
+<tspan dy="1em" x="0.000%">▶</tspan><tspan x="1.550%">c</tspan><tspan x="2.326%">u</tspan><tspan x="3.101%">r</tspan><tspan x="3.876%">l</tspan><tspan x="5.426%">-</tspan><tspan x="6.202%">s</tspan><tspan x="7.752%">-</tspan><tspan x="8.527%">H</tspan><tspan x="10.078%">&quot;</tspan><tspan x="10.853%">H</tspan><tspan x="11.628%">o</tspan><tspan x="12.403%">s</tspan><tspan x="13.178%">t</tspan><tspan x="13.953%">:</tspan><tspan x="15.504%">n</tspan><tspan x="16.279%">o</tspan><tspan x="17.054%">n</tspan><tspan x="17.829%">e</tspan><tspan x="18.605%">x</tspan><tspan x="19.380%">i</tspan><tspan x="20.155%">s</tspan><tspan x="20.930%">t</tspan><tspan x="21.705%">e</tspan><tspan x="22.481%">n</tspan><tspan x="23.256%">t</tspan><tspan x="24.031%">.</tspan><tspan x="24.806%">f</tspan><tspan x="25.581%">f</tspan><tspan x="26.357%">u</tspan><tspan x="27.132%">f</tspan><tspan x="27.907%">.</tspan><tspan x="28.682%">i</tspan><tspan x="29.457%">o</tspan><tspan x="30.233%">.</tspan><tspan x="31.008%">f</tspan><tspan x="31.783%">i</tspan><tspan x="32.558%">&quot;</tspan><tspan x="34.109%">h</tspan><tspan x="34.884%">t</tspan><tspan x="35.659%">t</tspan><tspan x="36.434%">p</tspan><tspan x="37.209%">:</tspan><tspan x="37.984%">/</tspan><tspan x="38.760%">/</tspan><tspan x="39.535%">f</tspan><tspan x="40.310%">f</tspan><tspan x="41.085%">u</tspan><tspan x="41.860%">f</tspan><tspan x="42.636%">.</tspan><tspan x="43.411%">i</tspan><tspan x="44.186%">o</tspan><tspan x="44.961%">.</tspan><tspan x="45.736%">f</tspan><tspan x="46.512%">i</tspan><tspan x="48.062%">|</tspan><tspan x="48.837%">w</tspan><tspan x="49.612%">c</tspan><tspan x="51.163%">-</tspan><tspan x="51.938%">c</tspan>
+</tspan>
+<tspan y="18.421%">
+
+</tspan>
+<tspan y="21.053%">
+<tspan dy="1em" x="0.000%">6</tspan><tspan x="0.775%">1</tspan><tspan x="1.550%">2</tspan>
+</tspan>
+<tspan y="23.684%">
+
+</tspan>
+<tspan y="26.316%">
+<tspan dy="1em" x="0.000%" class="c-4">~</tspan>
+</tspan>
+<tspan y="28.947%">
+<tspan dy="1em" x="0.000%">▶</tspan><tspan x="1.550%">#</tspan><tspan x="3.101%">F</tspan><tspan x="3.876%">i</tspan><tspan x="4.651%">l</tspan><tspan x="5.426%">t</tspan><tspan x="6.202%">e</tspan><tspan x="6.977%">r</tspan><tspan x="8.527%">o</tspan><tspan x="9.302%">u</tspan><tspan x="10.078%">t</tspan><tspan x="11.628%">r</tspan><tspan x="12.403%">e</tspan><tspan x="13.178%">s</tspan><tspan x="13.953%">p</tspan><tspan x="14.729%">o</tspan><tspan x="15.504%">n</tspan><tspan x="16.279%">s</tspan><tspan x="17.054%">e</tspan><tspan x="17.829%">s</tspan><tspan x="19.380%">o</tspan><tspan x="20.155%">f</tspan><tspan x="21.705%">l</tspan><tspan x="22.481%">e</tspan><tspan x="23.256%">n</tspan><tspan x="24.031%">g</tspan><tspan x="24.806%">t</tspan><tspan x="25.581%">h</tspan><tspan x="27.132%">6</tspan><tspan x="27.907%">1</tspan><tspan x="28.682%">2</tspan>
+</tspan>
+<tspan y="31.579%">
+
+</tspan>
+<tspan y="34.211%">
+
+</tspan>
+<tspan y="36.842%">
+<tspan dy="1em" x="0.000%" class="c-4">~</tspan>
+</tspan>
+<tspan y="39.474%">
+<tspan dy="1em" x="0.000%">▶</tspan><tspan x="1.550%">f</tspan><tspan x="2.326%">f</tspan><tspan x="3.101%">u</tspan><tspan x="3.876%">f</tspan><tspan x="5.426%">-</tspan><tspan x="6.202%">c</tspan><tspan x="7.752%">-</tspan><tspan x="8.527%">w</tspan><tspan x="10.078%">/</tspan><tspan x="10.853%">p</tspan><tspan x="11.628%">a</tspan><tspan x="12.403%">t</tspan><tspan x="13.178%">h</tspan><tspan x="13.953%">/</tspan><tspan x="14.729%">t</tspan><tspan x="15.504%">o</tspan><tspan x="16.279%">/</tspan><tspan x="17.054%">w</tspan><tspan x="17.829%">o</tspan><tspan x="18.605%">r</tspan><tspan x="19.380%">d</tspan><tspan x="20.155%">l</tspan><tspan x="20.930%">i</tspan><tspan x="21.705%">s</tspan><tspan x="22.481%">t</tspan><tspan x="24.031%">-</tspan><tspan x="24.806%">u</tspan><tspan x="26.357%">h</tspan><tspan x="27.132%">t</tspan><tspan x="27.907%">t</tspan><tspan x="28.682%">p</tspan><tspan x="29.457%">:</tspan><tspan x="30.233%">/</tspan><tspan x="31.008%">/</tspan><tspan x="31.783%">f</tspan><tspan x="32.558%">f</tspan><tspan x="33.333%">u</tspan><tspan x="34.109%">f</tspan><tspan x="34.884%">.</tspan><tspan x="35.659%">i</tspan><tspan x="36.434%">o</tspan><tspan x="37.209%">.</tspan><tspan x="37.984%">f</tspan><tspan x="38.760%">i</tspan><tspan x="40.310%">-</tspan><tspan x="41.085%">H</tspan><tspan x="42.636%">&quot;</tspan><tspan x="43.411%">H</tspan><tspan x="44.186%">o</tspan><tspan x="44.961%">s</tspan><tspan x="45.736%">t</tspan><tspan x="46.512%">:</tspan><tspan x="48.062%">F</tspan><tspan x="48.837%">U</tspan><tspan x="49.612%">Z</tspan><tspan x="50.388%">Z</tspan><tspan x="51.163%">.</tspan><tspan x="51.938%">f</tspan><tspan x="52.713%">f</tspan><tspan x="53.488%">u</tspan><tspan x="54.264%">f</tspan><tspan x="55.039%">.</tspan><tspan x="55.814%">i</tspan><tspan x="56.589%">o</tspan><tspan x="57.364%">.</tspan><tspan x="58.140%">f</tspan><tspan x="58.915%">i</tspan><tspan x="59.690%">&quot;</tspan><tspan x="61.240%">-</tspan><tspan x="62.016%">f</tspan><tspan x="62.791%">s</tspan><tspan x="64.341%">6</tspan><tspan x="65.116%">1</tspan><tspan x="65.891%">2</tspan>
+</tspan>
+<tspan y="42.105%">
+
+</tspan>
+<tspan y="44.737%">
+<tspan dy="1em" x="6.202%">/</tspan><tspan x="6.977%">&#39;</tspan><tspan x="7.752%">_</tspan><tspan x="8.527%">_</tspan><tspan x="9.302%">_</tspan><tspan x="10.078%">\</tspan><tspan x="12.403%">/</tspan><tspan x="13.178%">&#39;</tspan><tspan x="13.953%">_</tspan><tspan x="14.729%">_</tspan><tspan x="15.504%">_</tspan><tspan x="16.279%">\</tspan><tspan x="25.581%">/</tspan><tspan x="26.357%">&#39;</tspan><tspan x="27.132%">_</tspan><tspan x="27.907%">_</tspan><tspan x="28.682%">_</tspan><tspan x="29.457%">\</tspan>
+</tspan>
+<tspan y="47.368%">
+<tspan dy="1em" x="5.426%">/</tspan><tspan x="6.202%">\</tspan><tspan x="7.752%">\</tspan><tspan x="8.527%">_</tspan><tspan x="9.302%">_</tspan><tspan x="10.078%">/</tspan><tspan x="11.628%">/</tspan><tspan x="12.403%">\</tspan><tspan x="13.953%">\</tspan><tspan x="14.729%">_</tspan><tspan x="15.504%">_</tspan><tspan x="16.279%">/</tspan><tspan x="18.605%">_</tspan><tspan x="19.380%">_</tspan><tspan x="21.705%">_</tspan><tspan x="22.481%">_</tspan><tspan x="24.806%">/</tspan><tspan x="25.581%">\</tspan><tspan x="27.132%">\</tspan><tspan x="27.907%">_</tspan><tspan x="28.682%">_</tspan><tspan x="29.457%">/</tspan>
+</tspan>
+<tspan y="50.000%">
+<tspan dy="1em" x="5.426%">\</tspan><tspan x="6.977%">\</tspan><tspan x="8.527%">,</tspan><tspan x="9.302%">_</tspan><tspan x="10.078%">_</tspan><tspan x="10.853%">\</tspan><tspan x="11.628%">\</tspan><tspan x="13.178%">\</tspan><tspan x="14.729%">,</tspan><tspan x="15.504%">_</tspan><tspan x="16.279%">_</tspan><tspan x="17.054%">\</tspan><tspan x="17.829%">/</tspan><tspan x="18.605%">\</tspan><tspan x="20.155%">\</tspan><tspan x="20.930%">/</tspan><tspan x="21.705%">\</tspan><tspan x="23.256%">\</tspan><tspan x="24.806%">\</tspan><tspan x="26.357%">\</tspan><tspan x="27.907%">,</tspan><tspan x="28.682%">_</tspan><tspan x="29.457%">_</tspan><tspan x="30.233%">\</tspan>
+</tspan>
+<tspan y="52.632%">
+<tspan dy="1em" x="6.202%">\</tspan><tspan x="7.752%">\</tspan><tspan x="9.302%">\</tspan><tspan x="10.078%">_</tspan><tspan x="10.853%">/</tspan><tspan x="12.403%">\</tspan><tspan x="13.953%">\</tspan><tspan x="15.504%">\</tspan><tspan x="16.279%">_</tspan><tspan x="17.054%">/</tspan><tspan x="17.829%">\</tspan><tspan x="19.380%">\</tspan><tspan x="20.930%">\</tspan><tspan x="21.705%">_</tspan><tspan x="22.481%">\</tspan><tspan x="24.031%">\</tspan><tspan x="25.581%">\</tspan><tspan x="27.132%">\</tspan><tspan x="28.682%">\</tspan><tspan x="29.457%">_</tspan><tspan x="30.233%">/</tspan>
+</tspan>
+<tspan y="55.263%">
+<tspan dy="1em" x="6.977%">\</tspan><tspan x="8.527%">\</tspan><tspan x="9.302%">_</tspan><tspan x="10.078%">\</tspan><tspan x="13.178%">\</tspan><tspan x="14.729%">\</tspan><tspan x="15.504%">_</tspan><tspan x="16.279%">\</tspan><tspan x="18.605%">\</tspan><tspan x="20.155%">\</tspan><tspan x="20.930%">_</tspan><tspan x="21.705%">_</tspan><tspan x="22.481%">_</tspan><tspan x="23.256%">_</tspan><tspan x="24.031%">/</tspan><tspan x="26.357%">\</tspan><tspan x="27.907%">\</tspan><tspan x="28.682%">_</tspan><tspan x="29.457%">\</tspan>
+</tspan>
+<tspan y="57.895%">
+<tspan dy="1em" x="7.752%">\</tspan><tspan x="8.527%">/</tspan><tspan x="9.302%">_</tspan><tspan x="10.078%">/</tspan><tspan x="13.953%">\</tspan><tspan x="14.729%">/</tspan><tspan x="15.504%">_</tspan><tspan x="16.279%">/</tspan><tspan x="19.380%">\</tspan><tspan x="20.155%">/</tspan><tspan x="20.930%">_</tspan><tspan x="21.705%">_</tspan><tspan x="22.481%">_</tspan><tspan x="23.256%">/</tspan><tspan x="27.132%">\</tspan><tspan x="27.907%">/</tspan><tspan x="28.682%">_</tspan><tspan x="29.457%">/</tspan>
+</tspan>
+<tspan y="60.526%">
+
+</tspan>
+<tspan y="63.158%">
+<tspan dy="1em" x="5.426%">v</tspan><tspan x="6.202%">0</tspan><tspan x="6.977%">.</tspan><tspan x="7.752%">3</tspan>
+</tspan>
+<tspan y="65.789%">
+<tspan dy="1em" x="0.000%">_</tspan><tspan x="0.775%">_</tspan><tspan x="1.550%">_</tspan><tspan x="2.326%">_</tspan><tspan x="3.101%">_</tspan><tspan x="3.876%">_</tspan><tspan x="4.651%">_</tspan><tspan x="5.426%">_</tspan><tspan x="6.202%">_</tspan><tspan x="6.977%">_</tspan><tspan x="7.752%">_</tspan><tspan x="8.527%">_</tspan><tspan x="9.302%">_</tspan><tspan x="10.078%">_</tspan><tspan x="10.853%">_</tspan><tspan x="11.628%">_</tspan><tspan x="12.403%">_</tspan><tspan x="13.178%">_</tspan><tspan x="13.953%">_</tspan><tspan x="14.729%">_</tspan><tspan x="15.504%">_</tspan><tspan x="16.279%">_</tspan><tspan x="17.054%">_</tspan><tspan x="17.829%">_</tspan><tspan x="18.605%">_</tspan><tspan x="19.380%">_</tspan><tspan x="20.155%">_</tspan><tspan x="20.930%">_</tspan><tspan x="21.705%">_</tspan><tspan x="22.481%">_</tspan><tspan x="23.256%">_</tspan><tspan x="24.031%">_</tspan><tspan x="24.806%">_</tspan><tspan x="25.581%">_</tspan><tspan x="26.357%">_</tspan><tspan x="27.132%">_</tspan><tspan x="27.907%">_</tspan><tspan x="28.682%">_</tspan><tspan x="29.457%">_</tspan><tspan x="30.233%">_</tspan><tspan x="31.008%">_</tspan><tspan x="31.783%">_</tspan><tspan x="32.558%">_</tspan><tspan x="33.333%">_</tspan><tspan x="34.109%">_</tspan><tspan x="34.884%">_</tspan><tspan x="35.659%">_</tspan><tspan x="36.434%">_</tspan>
+</tspan>
+<tspan y="68.421%">
+
+</tspan>
+<tspan y="71.053%">
+<tspan dy="1em" x="0.775%">:</tspan><tspan x="1.550%">:</tspan><tspan x="3.101%">M</tspan><tspan x="3.876%">e</tspan><tspan x="4.651%">t</tspan><tspan x="5.426%">h</tspan><tspan x="6.202%">o</tspan><tspan x="6.977%">d</tspan><tspan x="13.178%">:</tspan><tspan x="14.729%">G</tspan><tspan x="15.504%">E</tspan><tspan x="16.279%">T</tspan>
+</tspan>
+<tspan y="73.684%">
+<tspan dy="1em" x="0.775%">:</tspan><tspan x="1.550%">:</tspan><tspan x="3.101%">U</tspan><tspan x="3.876%">R</tspan><tspan x="4.651%">L</tspan><tspan x="13.178%">:</tspan><tspan x="14.729%">h</tspan><tspan x="15.504%">t</tspan><tspan x="16.279%">t</tspan><tspan x="17.054%">p</tspan><tspan x="17.829%">:</tspan><tspan x="18.605%">/</tspan><tspan x="19.380%">/</tspan><tspan x="20.155%">f</tspan><tspan x="20.930%">f</tspan><tspan x="21.705%">u</tspan><tspan x="22.481%">f</tspan><tspan x="23.256%">.</tspan><tspan x="24.031%">i</tspan><tspan x="24.806%">o</tspan><tspan x="25.581%">.</tspan><tspan x="26.357%">f</tspan><tspan x="27.132%">i</tspan>
+</tspan>
+<tspan y="76.316%">
+<tspan dy="1em" x="0.775%">:</tspan><tspan x="1.550%">:</tspan><tspan x="3.101%">M</tspan><tspan x="3.876%">a</tspan><tspan x="4.651%">t</tspan><tspan x="5.426%">c</tspan><tspan x="6.202%">h</tspan><tspan x="6.977%">e</tspan><tspan x="7.752%">r</tspan><tspan x="13.178%">:</tspan><tspan x="14.729%">R</tspan><tspan x="15.504%">e</tspan><tspan x="16.279%">s</tspan><tspan x="17.054%">p</tspan><tspan x="17.829%">o</tspan><tspan x="18.605%">n</tspan><tspan x="19.380%">s</tspan><tspan x="20.155%">e</tspan><tspan x="21.705%">s</tspan><tspan x="22.481%">t</tspan><tspan x="23.256%">a</tspan><tspan x="24.031%">t</tspan><tspan x="24.806%">u</tspan><tspan x="25.581%">s</tspan><tspan x="26.357%">:</tspan><tspan x="27.907%">2</tspan><tspan x="28.682%">0</tspan><tspan x="29.457%">0</tspan><tspan x="30.233%">,</tspan><tspan x="31.008%">2</tspan><tspan x="31.783%">0</tspan><tspan x="32.558%">4</tspan><tspan x="33.333%">,</tspan><tspan x="34.109%">3</tspan><tspan x="34.884%">0</tspan><tspan x="35.659%">1</tspan><tspan x="36.434%">,</tspan><tspan x="37.209%">3</tspan><tspan x="37.984%">0</tspan><tspan x="38.760%">2</tspan><tspan x="39.535%">,</tspan><tspan x="40.310%">3</tspan><tspan x="41.085%">0</tspan><tspan x="41.860%">7</tspan><tspan x="42.636%">,</tspan><tspan x="43.411%">4</tspan><tspan x="44.186%">0</tspan><tspan x="44.961%">1</tspan>
+</tspan>
+<tspan y="78.947%">
+<tspan dy="1em" x="0.775%">:</tspan><tspan x="1.550%">:</tspan><tspan x="3.101%">F</tspan><tspan x="3.876%">i</tspan><tspan x="4.651%">l</tspan><tspan x="5.426%">t</tspan><tspan x="6.202%">e</tspan><tspan x="6.977%">r</tspan><tspan x="13.178%">:</tspan><tspan x="14.729%">R</tspan><tspan x="15.504%">e</tspan><tspan x="16.279%">s</tspan><tspan x="17.054%">p</tspan><tspan x="17.829%">o</tspan><tspan x="18.605%">n</tspan><tspan x="19.380%">s</tspan><tspan x="20.155%">e</tspan><tspan x="21.705%">s</tspan><tspan x="22.481%">i</tspan><tspan x="23.256%">z</tspan><tspan x="24.031%">e</tspan><tspan x="24.806%">:</tspan><tspan x="26.357%">6</tspan><tspan x="27.132%">1</tspan><tspan x="27.907%">2</tspan>
+</tspan>
+<tspan y="81.579%">
+<tspan dy="1em" x="0.000%">_</tspan><tspan x="0.775%">_</tspan><tspan x="1.550%">_</tspan><tspan x="2.326%">_</tspan><tspan x="3.101%">_</tspan><tspan x="3.876%">_</tspan><tspan x="4.651%">_</tspan><tspan x="5.426%">_</tspan><tspan x="6.202%">_</tspan><tspan x="6.977%">_</tspan><tspan x="7.752%">_</tspan><tspan x="8.527%">_</tspan><tspan x="9.302%">_</tspan><tspan x="10.078%">_</tspan><tspan x="10.853%">_</tspan><tspan x="11.628%">_</tspan><tspan x="12.403%">_</tspan><tspan x="13.178%">_</tspan><tspan x="13.953%">_</tspan><tspan x="14.729%">_</tspan><tspan x="15.504%">_</tspan><tspan x="16.279%">_</tspan><tspan x="17.054%">_</tspan><tspan x="17.829%">_</tspan><tspan x="18.605%">_</tspan><tspan x="19.380%">_</tspan><tspan x="20.155%">_</tspan><tspan x="20.930%">_</tspan><tspan x="21.705%">_</tspan><tspan x="22.481%">_</tspan><tspan x="23.256%">_</tspan><tspan x="24.031%">_</tspan><tspan x="24.806%">_</tspan><tspan x="25.581%">_</tspan><tspan x="26.357%">_</tspan><tspan x="27.132%">_</tspan><tspan x="27.907%">_</tspan><tspan x="28.682%">_</tspan><tspan x="29.457%">_</tspan><tspan x="30.233%">_</tspan><tspan x="31.008%">_</tspan><tspan x="31.783%">_</tspan><tspan x="32.558%">_</tspan><tspan x="33.333%">_</tspan><tspan x="34.109%">_</tspan><tspan x="34.884%">_</tspan><tspan x="35.659%">_</tspan><tspan x="36.434%">_</tspan>
+</tspan>
+<tspan y="84.211%">
+
+</tspan>
+<tspan y="86.842%">
+<tspan dy="1em" x="0.000%">d</tspan><tspan x="0.775%">e</tspan><tspan x="1.550%">v</tspan><tspan x="18.605%">[</tspan><tspan x="19.380%">S</tspan><tspan x="20.155%">t</tspan><tspan x="20.930%">a</tspan><tspan x="21.705%">t</tspan><tspan x="22.481%">u</tspan><tspan x="23.256%">s</tspan><tspan x="24.031%">:</tspan><tspan x="25.581%" class="c-2">2</tspan><tspan x="26.357%" class="c-2">0</tspan><tspan x="27.132%" class="c-2">0</tspan><tspan x="27.907%">,</tspan><tspan x="29.457%">S</tspan><tspan x="30.233%">i</tspan><tspan x="31.008%">z</tspan><tspan x="31.783%">e</tspan><tspan x="32.558%">:</tspan><tspan x="34.109%">3</tspan><tspan x="34.884%">0</tspan><tspan x="35.659%">]</tspan>
+</tspan>
+<tspan y="89.474%">
+<tspan dy="1em" x="0.000%">:</tspan><tspan x="0.775%">:</tspan><tspan x="2.326%">P</tspan><tspan x="3.101%">r</tspan><tspan x="3.876%">o</tspan><tspan x="4.651%">g</tspan><tspan x="5.426%">r</tspan><tspan x="6.202%">e</tspan><tspan x="6.977%">s</tspan><tspan x="7.752%">s</tspan><tspan x="8.527%">:</tspan><tspan x="10.078%">[</tspan><tspan x="10.853%">1</tspan><tspan x="11.628%">4</tspan><tspan x="12.403%">2</tspan><tspan x="13.178%">1</tspan><tspan x="13.953%">/</tspan><tspan x="14.729%">4</tspan><tspan x="15.504%">5</tspan><tspan x="16.279%">9</tspan><tspan x="17.054%">4</tspan><tspan x="17.829%">]</tspan><tspan x="19.380%">:</tspan><tspan x="20.155%">:</tspan><tspan x="21.705%">D</tspan><tspan x="22.481%">u</tspan><tspan x="23.256%">r</tspan><tspan x="24.031%">a</tspan><tspan x="24.806%">t</tspan><tspan x="25.581%">i</tspan><tspan x="26.357%">o</tspan><tspan x="27.132%">n</tspan><tspan x="27.907%">:</tspan><tspan x="29.457%">[</tspan><tspan x="30.233%">0</tspan><tspan x="31.008%">:</tspan><tspan x="31.783%">0</tspan><tspan x="32.558%">0</tspan><tspan x="33.333%">:</tspan><tspan x="34.109%">0</tspan><tspan x="34.884%">0</tspan><tspan x="35.659%">]</tspan><tspan x="37.209%">:</tspan><tspan x="37.984%">:</tspan>
+</tspan>
+<tspan y="92.105%">
+
+</tspan>
+<tspan y="94.737%">
+
+</tspan>
+
+</text>
+
+<g transform="translate(-50 -50)">
+<svg x="50%" y="50%" width="100" height="100">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 866.0254037844387 866.0254037844387">
+  <defs>
+    <mask id="small-triangle-mask">
+      <rect width="100%" height="100%" fill="white"/>
+      <polygon points="508.01270189221935 433.01270189221935, 208.0127018922194 259.8076211353316, 208.01270189221927 606.217782649107" fill="black"></polygon>
+    </mask>
+  </defs>
+  <polygon points="808.0127018922194 433.01270189221935, 58.01270189221947 -1.1368683772161603e-13, 58.01270189221913 866.0254037844386" mask="url(#small-triangle-mask)" fill="white"></polygon>
+  <polyline points="481.2177826491071 333.0127018922194, 134.80762113533166 533.0127018922194" stroke="white" stroke-width="90"></polyline>
+</svg>
+
+</svg>
+</g>
+</svg>
+</svg>
